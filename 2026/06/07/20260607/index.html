@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Java 反射基础 | KatzenyaSax: Hello!</title><meta name="author" content="KatzenyaSax"><meta name="copyright" content="KatzenyaSax"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="反射 基础什么是反射JVM 可以在运行时动态地拿到类的详细信息，这允许在运行时才确认类的信息。 谁在用反射首先，我们人肯定用得很少，或者说基本不用。用这个的多是一些支持自动化的组件，比如 Spring 和 Mybatis 这些框架。 从内存的角度说反射反射的物理层基础当 ClassLoader 加载一个类（注意是字节码）时，首先会把类的一些固有信息，例如类名、有哪些成员、成员方法的实现段、静态成员">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 反射基础">
+<meta property="og:url" content="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/06/07/20260607/index.html">
+<meta property="og:site_name" content="KatzenyaSax: Hello!">
+<meta property="og:description" content="反射 基础什么是反射JVM 可以在运行时动态地拿到类的详细信息，这允许在运行时才确认类的信息。 谁在用反射首先，我们人肯定用得很少，或者说基本不用。用这个的多是一些支持自动化的组件，比如 Spring 和 Mybatis 这些框架。 从内存的角度说反射反射的物理层基础当 ClassLoader 加载一个类（注意是字节码）时，首先会把类的一些固有信息，例如类名、有哪些成员、成员方法的实现段、静态成员">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kaztenyasax-mall.oss-cn-beijing.aliyuncs.com/head.jpg">
+<meta property="article:published_time" content="2026-06-07T04:39:57.000Z">
+<meta property="article:modified_time" content="2026-06-07T04:47:31.924Z">
+<meta property="article:author" content="KatzenyaSax">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kaztenyasax-mall.oss-cn-beijing.aliyuncs.com/head.jpg"><link rel="shortcut icon" href="https://kaztenyasax-mall.oss-cn-beijing.aliyuncs.com/head.jpg"><link rel="canonical" href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/06/07/20260607/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java 反射基础',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-06-07 12:47:31'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="KatzenyaSax: Hello!" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://kaztenyasax-mall.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="KatzenyaSax: Hello!"><span class="site-name">KatzenyaSax: Hello!</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java 反射基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-06-07T04:39:57.000Z" title="发表于 2026-06-07 12:39:57">2026-06-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-06-07T04:47:31.924Z" title="更新于 2026-06-07 12:47:31">2026-06-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java 反射基础"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="反射-基础"><a href="#反射-基础" class="headerlink" title="反射 基础"></a>反射 基础</h1><h2 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h2><p>JVM 可以在运行时动态地拿到类的详细信息，这允许在运行时才确认类的信息。</p>
+<h2 id="谁在用反射"><a href="#谁在用反射" class="headerlink" title="谁在用反射"></a>谁在用反射</h2><p>首先，我们人肯定用得很少，或者说基本不用。用这个的多是一些支持自动化的组件，比如 Spring 和 Mybatis 这些框架。</p>
+<h2 id="从内存的角度说反射"><a href="#从内存的角度说反射" class="headerlink" title="从内存的角度说反射"></a>从内存的角度说反射</h2><h3 id="反射的物理层基础"><a href="#反射的物理层基础" class="headerlink" title="反射的物理层基础"></a>反射的物理层基础</h3><p>当 ClassLoader 加载一个类（注意是字节码）时，首先会把类的一些固有信息，例如类名、有哪些成员、成员方法的实现段、静态成员等，都会存到<code>元空间</code>，其格式是用<code>Cpp</code>写的，但是注意，只是存储格式是 Cpp 的，其成员名称、方法代码段原文是以 .class 存储的。</p>
+<p>在将类的固有信息存入<code>元空间</code>之后，紧接着 JVM 会实例化一个<code>java.lang.Class</code>类型的对象存在<code>堆区</code>，这个对象同样用来存储类的固有信息，但和<code>元空间</code>的那个 Cpp 结构体的区别在于：<code>元空间</code>里那个存的是<code>真正的数据</code>；<code>java.lang.Class</code>对象存的是<code>指向元空间那片空间的Cpp指针</code>，所以这个 Class 对象相当于一个<code>代理</code>。</p>
+<p>方法也是一样的，方法的实现段存在<code>元空间</code>，<code>java.lang.reflect.Method</code>对象就存方法在<code>元空间</code>内真实存在的方法实现段的 Cpp 指针。</p>
+<h3 id="元空间内方法实现段的存储"><a href="#元空间内方法实现段的存储" class="headerlink" title="元空间内方法实现段的存储"></a>元空间内方法实现段的存储</h3><p>首先，Java 代码被翻译成字节码被存入元空间，这里的字节码并非一整段字符串，而是按照一句一句存储的<code>数组</code>，就比如下面的 java 代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;<span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个方法的实现段<code>int a = 1;</code>被翻译成字节码就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iconst_1</span><br><span class="line">istore_1</span><br><span class="line">return</span><br></pre></td></tr></table></figure>
+
+<p>那在<code>元空间</code>内是怎么存这个方法的？（并非实际存储，只是模拟）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0x000000    iconst_1    &lt;--- ConstMethod* _constMethod</span><br><span class="line">0x000016    istore_1</span><br><span class="line">0x000032    return</span><br></pre></td></tr></table></figure>
+
+<p>被实例化的 Method 对象内存在的方法指针<code>ConstMethod* _constMethod;</code>就是<code>0x000000</code>，代表这个代码段的字节码一句一句，存放在这个地址。</p>
+<h3 id="反射怎么执行方法？"><a href="#反射怎么执行方法？" class="headerlink" title="反射怎么执行方法？"></a>反射怎么执行方法？</h3><p>当需要用反射的时候，可通过<code>java.lang.reflect.Method</code>对象调用<code>invoke(args)</code>方法，这一步可以是由我们自行编写代码发起的，也可以是各种框架内部写死的调用方法发起的。而这个方法在底层，实则是 JVM 主动调用了一个 由 Cpp 实现的 <code>native方法</code>，由该方法执行。<code>native方法</code>再到<code>元空间</code>内，根据方法的指针，查找到代码段的字节码，然后一句一句解释执行。</p>
+<p>不过，考虑到反射方法执行的极高开销（jvm 调用<code>native方法</code>，运行时动态路由到方法地址），反射方法和普通方法类似，当成为热点方法后，JVM 会用字节码动态地拼凑出一个全新的类，用来直接调用这个方法，然后通过类加载器<code>加载</code>到内存中（当然，这个方法的实现段一样存在<code>元空间</code>）。之后的调用就简单了，JVM 不需要再调用底层 Cpp 代码动态路由方法地址，而是和普通方法一样处理，JVM 通过访问虚函数表，<code>直接定位</code>到方法的实现段，并加载到<code>栈区</code>解释执行。当然，如果实在太热，也会在超过调用次数阈值后，直接缓存为机器码，让 CPU 直接执行。 </p>
+<h3 id="反射性能为什么不好？"><a href="#反射性能为什么不好？" class="headerlink" title="反射性能为什么不好？"></a>反射性能为什么不好？</h3><p>从上面反射的执行就可以看出，反射方法之所以性能不如普通方法，已然有以下两大原因：</p>
+<ul>
+<li><p>JVM 调用底层 Cpp 代码耗费性能；</p>
+</li>
+<li><p>Cpp 代码需要在 JVM 运行时，通过不断地路由才能确定方法的地址。</p>
+</li>
+</ul>
+<p>然而，即便反射方法在经过16次后，也即克服了上面两大问题，反射方法的性能会依然不如普通方法，这里还有三大原因：</p>
+<ul>
+<li><p><code>invoke(Object ...)</code> 方法的参数为可变参数，可变参数的处理相当麻烦，加重性能负担；</p>
+</li>
+<li><p>方法权限问题：反射执行方法在编译时不会检查权限，因为反射是在 JVM 运行时才进行的，也就是说被 invoke 的方法有可能不是 public 的，而 private 方法原则上是不能被其他对象调用的，正因为有这种可能性，执行时底层会不断地问询鉴权是否有权执行这个方法，这又是性能负担。不过，可以使用<code>method.setAccessible(true);</code>，强制让反射方法获取权限，并且跳过鉴权的环节；</p>
+</li>
+<li><p>无法内联：<code>inline</code>是优化执行效率的方法，普通方法内直接把方法代码段粘贴到调用的地方避免跳转地址的开销，然而反射方法做不到精确的预测，内联大概率失败，所以无法吃到这个 buff，性能自然就下来了。</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io">KatzenyaSax</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/06/07/20260607/">https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/06/07/20260607/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io" target="_blank">KatzenyaSax: Hello!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post_share"><div class="social-share" data-image="https://kaztenyasax-mall.oss-cn-beijing.aliyuncs.com/head.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/10/27/213007/" title="RabbitMQ的基础配置及使用"><img class="cover" src="https://kaztenyasax-mall.oss-cn-beijing.aliyuncs.com/rabbitmq.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">RabbitMQ的基础配置及使用</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://kaztenyasax-mall.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">KatzenyaSax</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" href="https://github.com/KatzenyaSax"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Hello</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84-%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">反射 基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%B0%84"><span class="toc-number">1.1.</span> <span class="toc-text">什么是反射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%81%E5%9C%A8%E7%94%A8%E5%8F%8D%E5%B0%84"><span class="toc-number">1.2.</span> <span class="toc-text">谁在用反射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E5%86%85%E5%AD%98%E7%9A%84%E8%A7%92%E5%BA%A6%E8%AF%B4%E5%8F%8D%E5%B0%84"><span class="toc-number">1.3.</span> <span class="toc-text">从内存的角度说反射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E7%9A%84%E7%89%A9%E7%90%86%E5%B1%82%E5%9F%BA%E7%A1%80"><span class="toc-number">1.3.1.</span> <span class="toc-text">反射的物理层基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%A9%BA%E9%97%B4%E5%86%85%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%AE%B5%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">元空间内方法实现段的存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%80%8E%E4%B9%88%E6%89%A7%E8%A1%8C%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="toc-number">1.3.3.</span> <span class="toc-text">反射怎么执行方法？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%80%A7%E8%83%BD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%A5%BD%EF%BC%9F"><span class="toc-number">1.3.4.</span> <span class="toc-text">反射性能为什么不好？</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/07/20260607/" title="Java 反射基础">Java 反射基础</a><time datetime="2026-06-07T04:39:57.000Z" title="发表于 2026-06-07 12:39:57">2026-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/27/213007/" title="RabbitMQ的基础配置及使用"><img src="https://kaztenyasax-mall.oss-cn-beijing.aliyuncs.com/rabbitmq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RabbitMQ的基础配置及使用"/></a><div class="content"><a class="title" href="/2023/10/27/213007/" title="RabbitMQ的基础配置及使用">RabbitMQ的基础配置及使用</a><time datetime="2023-10-27T13:30:07.000Z" title="发表于 2023-10-27 21:30:07">2023-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/25/110959/" title="java三个月：从入门到门长腿跑了"><img src="https://kaztenyasax-mall.oss-cn-beijing.aliyuncs.com/64837dd8206978c888d67411b2a7de53.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java三个月：从入门到门长腿跑了"/></a><div class="content"><a class="title" href="/2023/10/25/110959/" title="java三个月：从入门到门长腿跑了">java三个月：从入门到门长腿跑了</a><time datetime="2023-10-25T03:09:59.000Z" title="发表于 2023-10-25 11:09:59">2023-10-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/24/152039/" title="docker的安装及使用"><img src="https://kaztenyasax-mall.oss-cn-beijing.aliyuncs.com/docker01.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker的安装及使用"/></a><div class="content"><a class="title" href="/2023/10/24/152039/" title="docker的安装及使用">docker的安装及使用</a><time datetime="2023-10-24T07:20:39.000Z" title="发表于 2023-10-24 15:20:39">2023-10-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/24/101439/" title="Hello World">Hello World</a><time datetime="2023-10-24T02:14:26.000Z" title="发表于 2023-10-24 10:14:26">2023-10-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By KatzenyaSax</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
