@@ -1,5 +1,6 @@
 https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/06/25/cmqt5ln4f0001fkyq3kgycicq/
 https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/06/25/cmqt5ln4c0000fkyqa4bw054z/
+https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/06/28/cmqxf0bue0000usyq4lxxehdb/
 https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/06/07/20260607/
 https://github.com/KatzenyaSax/KatzenyaSax.github.io/2023/10/27/213007/
 https://github.com/KatzenyaSax/KatzenyaSax.github.io/2023/10/24/152039/
@@ -13,3 +14,5 @@ https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/%E7%94%9F%E6%B4%BB/
 https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/agent/
 https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/LLM/
 https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/JavaGuide/
+https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/Agent/
+https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/HelloAgent/
