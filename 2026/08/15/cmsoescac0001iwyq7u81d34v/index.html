@@ -1,0 +1,260 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>JavaGuide - Agent记忆系统 | KatzenyaSax: Hello!</title><meta name="author" content="KatzenyaSax"><meta name="copyright" content="KatzenyaSax"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Agent 记忆系统AI Agent 记忆系统：短期记忆、长期记忆与记忆演化机制 记忆系统的设计Agent 的记忆一般分成短期和长期，二者需要从逻辑上、物理上进行隔离。不过，一般而言长期记忆从短期记忆的沉淀中得来。 短期记忆短期记忆是内存的记忆，用于存放当前交互过程，包括用户提问、模型每轮回复、工具调用的中间结果。我们可以说：短期记忆就是Agent动态构建的Context。 短期记忆长度受限于模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaGuide - Agent记忆系统">
+<meta property="og:url" content="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/08/15/cmsoescac0001iwyq7u81d34v/index.html">
+<meta property="og:site_name" content="KatzenyaSax: Hello!">
+<meta property="og:description" content="Agent 记忆系统AI Agent 记忆系统：短期记忆、长期记忆与记忆演化机制 记忆系统的设计Agent 的记忆一般分成短期和长期，二者需要从逻辑上、物理上进行隔离。不过，一般而言长期记忆从短期记忆的沉淀中得来。 短期记忆短期记忆是内存的记忆，用于存放当前交互过程，包括用户提问、模型每轮回复、工具调用的中间结果。我们可以说：短期记忆就是Agent动态构建的Context。 短期记忆长度受限于模型">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg">
+<meta property="article:published_time" content="2026-08-15T09:02:59.000Z">
+<meta property="article:modified_time" content="2026-08-15T08:59:06.299Z">
+<meta property="article:author" content="KatzenyaSax">
+<meta property="article:tag" content="agent">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="JavaGuide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg"><link rel="shortcut icon" href="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/fiveDragonTale.png"><link rel="canonical" href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/08/15/cmsoescac0001iwyq7u81d34v/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JavaGuide - Agent记忆系统',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-08-15 16:59:06'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="KatzenyaSax: Hello!" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="KatzenyaSax: Hello!"><span class="site-name">KatzenyaSax: Hello!</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JavaGuide - Agent记忆系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-08-15T09:02:59.000Z" title="发表于 2026-08-15 17:02:59">2026-08-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-08-15T08:59:06.299Z" title="更新于 2026-08-15 16:59:06">2026-08-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JavaGuide - Agent记忆系统"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Agent-记忆系统"><a href="#Agent-记忆系统" class="headerlink" title="Agent 记忆系统"></a>Agent 记忆系统</h1><p><a target="_blank" rel="noopener" href="https://javaguide.cn/ai/agent/agent-memory.html">AI Agent 记忆系统：短期记忆、长期记忆与记忆演化机制</a></p>
+<h2 id="记忆系统的设计"><a href="#记忆系统的设计" class="headerlink" title="记忆系统的设计"></a>记忆系统的设计</h2><p>Agent 的记忆一般分成短期和长期，二者需要从逻辑上、物理上进行隔离。不过，一般而言长期记忆从短期记忆的沉淀中得来。</p>
+<h3 id="短期记忆"><a href="#短期记忆" class="headerlink" title="短期记忆"></a>短期记忆</h3><p>短期记忆是内存的记忆，用于存放当前交互过程，包括用户提问、模型每轮回复、工具调用的中间结果。我们可以说：<strong>短期记忆就是Agent动态构建的Context</strong>。</p>
+<p>短期记忆长度受限于模型的窗口，为了防止 Context 超过窗口，一般对短期记忆做如下操作：</p>
+<ol>
+<li><p>压缩。</p>
+</li>
+<li><p>卸载：将上下文分索引，只将索引存到上下文中，内容卸载到本地持久化，按需查找再填入 Context。</p>
+</li>
+<li><p>隔离：一般是 Multiagent 时，master 给 slave 相对干净的上下文执行。</p>
+</li>
+</ol>
+<h3 id="长期记忆"><a href="#长期记忆" class="headerlink" title="长期记忆"></a>长期记忆</h3><p>长期记忆是持久化的记忆，例如 coding agent 普遍用 jsonl 文件存储交互信息；又或者一些通用 Agent 中将一些真理知识存入向量数据库，这些信息很大程度来源于短期记忆。</p>
+<p>那长期记忆和 RAG 有什么区别？</p>
+<ol>
+<li><p>技术侧重点不一样；长期记忆只是单纯地将重要信息持久化，防止丢失；而 RAG 系统则在记忆系统的基础上，担负着赋予 Agent 更多通用知识的责任。</p>
+</li>
+<li><p>存储侧重点不一样；长期记忆由短期记忆沉淀得来，一般存储的也是项目和用户的<strong>非通用知识</strong>，例如项目采用的技术、方案，用户的个人信息、偏好等，也就是 <code>语义信息</code>；而 RAG 系统则一般存的是<strong>通用知识</strong>，例如各种博物学知识、各种生活常识、团体内部规章制度等。</p>
+</li>
+</ol>
+<p>长期记忆和 RAG 在大多数场景是可联合的，不是非此即彼。</p>
+<h2 id="记忆的高级演化"><a href="#记忆的高级演化" class="headerlink" title="记忆的高级演化"></a>记忆的高级演化</h2><p>记忆光有存储和检索还不够，还需要搭载反思、固化、遗忘等机制，保证记忆足够权威、信息熵足够。</p>
+<h3 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h3><p>一般的记忆系统都非简单的 append-only，而是要对已有的记忆进行总结，提炼出真正高价值、高现实依据的信息。这就是反思与融合。</p>
+<p>一般而言，常见的反思有三类，分别发生在不同时间点。即一次交互完成后反思、一次交互内的每个子任务完成后反思、当连续执行高度相关的任务后反思。</p>
+<h4 id="反思坍缩"><a href="#反思坍缩" class="headerlink" title="反思坍缩"></a>反思坍缩</h4><p>即便 llm 的执行效果非常完美，但是在用户的一句 “你应该反思” 下，llm 会陷入自我怀疑：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">没有值得反思的地方啊？难道要反思我太完美了吗？不对不对，用户说了要反思，说明我肯定是错的，用户才是对的，我再好好看看......</span><br></pre></td></tr></table></figure>
+
+<p>之后，大概率会陷入与<strong>谄媚</strong>一样的问题：llm 会从犄角旮旯处翻出一点称不上错误的错误将其描述得非常严重，更有甚者会推翻自己原本正确的结论，来论证用户要求他们反思的这个决定是多么的正确。</p>
+<p>这个问题就是<strong>反思坍缩</strong>（或者别的名称）。</p>
+<h4 id="事实大于反思"><a href="#事实大于反思" class="headerlink" title="事实大于反思"></a>事实大于反思</h4><p>在早期时，ai 只能做做简单的任务，反思带来的效果确实很显著；但随着 agent 时代到来，ai 需要做更多更复杂的任务时，反思逐渐非但不带来提升反而会造成负面影响，不仅会降低性能、增加成本，更严重的是极大概率会降低输出效果。</p>
+<p>基于反思坍缩这个事实的存在，如今业内已形成主流认知：反思本身没有意义，外部反馈才有意义。</p>
+<p>具体而言，大家现在严禁大模型自己反思，要推翻结论必须有权威证据。也就是从<strong>反思然后发现问题</strong>，转变为<strong>证据表明出现了问题</strong>。</p>
+<p>这个思想在记忆系统也已形成，以前的记忆系统，让 llm 自己反思主动评估记忆库中记忆的重要度，然后进行固化、遗忘或者修改，但事实是这种做法不可靠，更不安全；而现在的记忆系统，则是基于事实进行行动：记忆调用的频次、记忆直接的相关度和重合度等参数，直接接管记忆是该融合、该固化还是该遗忘。</p>
+<p>所以归根结底，反思的问题是反思是否与事实一致？如果能够保证事实优先的话，反思似乎也有存在的价值，只不过不要识图从已有的事实中反思问题，而是反思有哪些问题是证据中没提到的。</p>
+<p>所以在当下而言，我们可以说：<strong>单纯的反思一无所用</strong>。</p>
+<h3 id="合成、固化、遗忘"><a href="#合成、固化、遗忘" class="headerlink" title="合成、固化、遗忘"></a>合成、固化、遗忘</h3><p>合成，就是将指向同一个事实的多个记忆，融合成单独的一个；固化就是提高一个记忆的重要度，让其在检索时得到更高的权重；遗忘就是降低一个记忆的重要度，最终使其不会被检索到。</p>
+<h4 id="遗忘机制的实现"><a href="#遗忘机制的实现" class="headerlink" title="遗忘机制的实现"></a>遗忘机制的实现</h4><p>两种实现方案：1.基于权重衰减；2.基于事实冲突。</p>
+<p>第一种很简单，对每条记忆维护一个 score 例如 <code>score = relevance × importance × decay(t)</code> ，会时间衰减，最符合人类记忆特征。</p>
+<p>第二种的话要求新旧记忆直接产生明显事实冲突，改为新的事实。</p>
+<p>在实践中，两种方法可以共存。第一点可以随时保证记忆库噪声即时清理，第二点则可以保证紧要记忆随时保持正确。</p>
+<h2 id="优化记忆检索"><a href="#优化记忆检索" class="headerlink" title="优化记忆检索"></a>优化记忆检索</h2><h3 id="混合检索"><a href="#混合检索" class="headerlink" title="混合检索"></a>混合检索</h3><p>我们知道，向量数据库的向量检索（Dense Retrieval）是计算余弦距离，是纯粹的数学途径，那么有没有可能出现两条毫无关联的信息余弦相近呢？是有可能的，就和哈希冲突一样。</p>
+<p>所以，我们在实践中不能完全相信向量检索，引入传统的关键词对比（BM25 &#x2F; Sparse），动态调整二者检索结果的权重，做成混合检索机制可以提升召回率。</p>
+<h3 id="元数据过滤"><a href="#元数据过滤" class="headerlink" title="元数据过滤"></a>元数据过滤</h3><p>在混合检索之前，增加一道元数据过滤（Hard Filters），基于 UserID、组织 ID、时间范围、业务标签等条件，滤除不满足的信息。</p>
+<h3 id="多重视检索链路"><a href="#多重视检索链路" class="headerlink" title="多重视检索链路"></a>多重视检索链路</h3><blockquote>
+<p>检索链路优化的 ROI 通常高于写入链路。</p>
+</blockquote>
+<h2 id="生产级记忆系统要点"><a href="#生产级记忆系统要点" class="headerlink" title="生产级记忆系统要点"></a>生产级记忆系统要点</h2><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>核心问题</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>多维索引</td>
+<td>召回精度</td>
+<td>Vector向量 + Graph图 + Keyword关键词 三种索引结合</td>
+</tr>
+<tr>
+<td>隐私合规</td>
+<td>GDPR 等法规</td>
+<td>写入前做 PII 脱敏</td>
+</tr>
+<tr>
+<td>冷热分离</td>
+<td>性能与成本</td>
+<td>高频偏好缓存 + 低频背景 RAG</td>
+</tr>
+</tbody></table>
+<p>GDPR：General Data Protection Regulation，欧洲最严格的数据保护法规之一，核心思想是用户有权知道你存了什么、有权要求删除自己的数据。</p>
+<p>PPI：个人可识别信息</p>
+<p>冷热分离：热点数据和冷门数据分开存储</p>
+<p>高频偏好缓存：常用的有关用户偏好的信息，进行缓存，而非每次查询</p>
+<h2 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h2><p>Md 文件也可以用来存储记忆，它的优势在于不需要繁琐的向量计算，低成本，阅读友好（各种意义上，ai read、人类打开就能直接读）。</p>
+<p>不过，当 md 文件长度过长后，这些优势也就荡然无存了，所以如果要使用 md 存储记忆，必须将其长度控制在一定范围内，而且尽量存储高信息量的记忆。</p>
+<p>基于 md 的以上特性，很多厂商都会维护 md 文档作为一部分记忆的存储方式。Manus 把文件系统视为结构化外部记忆；Claude Code 把 CLAUDE.md 和 Auto Memory 产品化；OpenClaw 等 Agent 项目和社区实践中，也能看到类似的文件化记忆思路。它们都说明，在不少 Agent 场景里，文件系统 + Markdown 已经是足够务实的长期记忆方案。</p>
+<h3 id="CLAUDE-md"><a href="#CLAUDE-md" class="headerlink" title="CLAUDE.md"></a>CLAUDE.md</h3><p>CLAUDE.md 是 cc 记忆系统采用双轨制的一环，与自动积累的 Auto Memory 共同构成 cc 的记忆系统。</p>
+<h4 id="哪些该存，哪些不该存"><a href="#哪些该存，哪些不该存" class="headerlink" title="哪些该存，哪些不该存"></a>哪些该存，哪些不该存</h4><p>首先，claude.md 的长度，官方建议控制在 200 行以内，如果 200 行以内写不完，可以把一些具体内容的文字拆分出去，给个引用链接，让 llm 自己去读就行。</p>
+<p>claude.md 存放的一般是与项目相关的固定属性与规则，例如技术栈、各个组件的版本信息、为什么选择架构和组件等，由于渐进式披露的存在，llm 会根据这些信息编写更加符合版本的代码。</p>
+<p>不适合存放的一般是行业默认行为，比如某种语言或框架的一般行为、大段文本等。</p>
+<h4 id="给出规范案例"><a href="#给出规范案例" class="headerlink" title="给出规范案例"></a>给出规范案例</h4><p>claude.md 里面的规范，我们想要 agent 必须完全遵守，该怎么做？agent 确实可以每次都将 claude.md 存到 context，llm 能百分之百读到规则，却不一定百分之百按照规则执行，又或者是是<strong>不按我们所想的执行</strong>，这个时候必须考虑：是不是我们没写清楚？</p>
+<p>事实上，我们最好给出案例，告诉 agent 该怎么做，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 依赖注入</span><br><span class="line"></span><br><span class="line">- 不要使用 @Autowired 字段注入</span><br><span class="line">- 使用构造器注入，配合 Lombok 的 @RequiredArgsConstructor</span><br><span class="line">- 参考示例：UserController.java 中的写法</span><br></pre></td></tr></table></figure>
+
+<h4 id="书写时按照项目惯例"><a href="#书写时按照项目惯例" class="headerlink" title="书写时按照项目惯例"></a>书写时按照项目惯例</h4><p>标题尽量用常规名字，比如 Commands、Structure、Conventions、Testing。Claude 的训练数据里有大量标准 README 结构，它对这类标题下面通常写什么有稳定预期。</p>
+<h2 id="案例分析：PI-Agent"><a href="#案例分析：PI-Agent" class="headerlink" title="案例分析：PI Agent"></a>案例分析：PI Agent</h2><p>PI 的 Context 有三大来源：system prompt、用户输入、session jsonl，三者共同占用上下文窗口。其中的 session json 就是 PI 的长期记忆来源。</p>
+<h3 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h3><p>Context 由 agent 动态构建：当用户输入请求时，系统分别从三大来源搜集信息，将其拼接为一段文本，该文本的长度就是当前 Context 长度，按 token 数计算。当 token 数大于模型窗口，就必须考虑压缩上下文。然而，system prompt 和用户输入都是特别重要的信息，一般情况下不可减少，所以只能在 session jsonl 上进行压缩。</p>
+<h3 id="jsonl"><a href="#jsonl" class="headerlink" title="jsonl"></a>jsonl</h3><p>jsonl 是 pi 的唯一长期记忆来源，里面包含了用户输入、模型回复、工具调用结果等。</p>
+<p>拼接 Context 时，会将 jsonl 的文本全部提取，假如当前 jsonl 文件的长度是 200k，那就把 200k 的文本全部拼接到 Context 中，随后一次性发送给 LLM。</p>
+<p>不过，以上做法仅限于未经过 compact 时的 jsonl。接下来介绍 jsonl 的压缩，这是 Context 压缩的主要手段。</p>
+<h3 id="jsonl-的压缩"><a href="#jsonl-的压缩" class="headerlink" title="jsonl 的压缩"></a>jsonl 的压缩</h3><p>jsonl 的压缩，实则就是发送给 LLM，让它帮忙对 jsonl 的内容进行总结。不过，我们当然不会直接对 jsonl 文件进行改动，依照 append-only 原则，我们要将总结得到的 <code>summary</code> 拼接到 jsonl 文件后面。</p>
+<p>首先，哪些部分需要压缩？我们假设需要压缩时，jsonl 的长度是 800k：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">------</span><br><span class="line">0k</span><br><span class="line">10k</span><br><span class="line">20k</span><br><span class="line">30k</span><br><span class="line">......</span><br><span class="line">770k</span><br><span class="line">780k</span><br><span class="line">790k</span><br><span class="line">800k</span><br><span class="line">------</span><br></pre></td></tr></table></figure>
+
+<p>pi 会保留最近的 20k 上下文作为 <code>retainedTail</code>，以保证近期任务的上下文不会压缩；而对前面的 780k 上下文进行总结，并将 10k （假设）的 <code>summary</code> 拼接到后文：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">------</span><br><span class="line">0k</span><br><span class="line">10k</span><br><span class="line">......</span><br><span class="line">770k</span><br><span class="line">780k</span><br><span class="line">------</span><br><span class="line">retainedTail (20k)</span><br><span class="line">summary (10k)</span><br><span class="line">------</span><br></pre></td></tr></table></figure>
+
+<p>至此压缩完毕，随后继续 Context 的拼接。系统按顺序扫描 jsonl，发现存在 <code>summary</code>，于是将 <code>summary</code> 和前面的 <code>retainedTail</code> ，按照 <code>[summary, retainedTail]</code> 的顺序加入 Context，这样一来 jsonl 的占用就从原本的 800k 压缩为了 30k。</p>
+<p>所以说，jsonl 的长度永续增加，由于 append-only，后面产生的上下文信息会继续在后文拼接下去，并且会持续地发生 compact，当多次 compact 时，Context 只会接受最后一个 <code>[summary, retainedTail]</code>，前面所有的信息都会<strong>不再理会</strong>。</p>
+<p>另外，之前的 summary 会被再次压缩吗？会压缩的，但是 pi 会保证之前的 summary 的重要信息会保留下来。但是其实也没必要担心，因为 jsonl 始终没有丢失，那么 Agent 就可以随时读回来。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io">KatzenyaSax</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/08/15/cmsoescac0001iwyq7u81d34v/">https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/08/15/cmsoescac0001iwyq7u81d34v/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io" target="_blank">KatzenyaSax: Hello!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/agent/">agent</a><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/JavaGuide/">JavaGuide</a></div><div class="post_share"><div class="social-share" data-image="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/08/15/cmsy8plac0000g4yqgtbl4v9f/" title="JavaGuide - 提示词工程 &amp; 上下文工程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JavaGuide - 提示词工程 &amp; 上下文工程</div></div></a></div><div class="next-post pull-right"><a href="/2026/08/11/cmsoescaa0000iwyqguib8t8i/" title="JavaGuide - Agent核心概念"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaGuide - Agent核心概念</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2026/06/25/cmsn10jcb0003royq487wet9b/" title="JavaGuide - 大模型调用工程实践"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-25</div><div class="title">JavaGuide - 大模型调用工程实践</div></div></a></div><div><a href="/2026/06/25/cmsn10jcd0007royqebtc3tx0/" title="JavaGuide - LLM 运行机制"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-25</div><div class="title">JavaGuide - LLM 运行机制</div></div></a></div><div><a href="/2026/08/10/cmsn10jce000broyq6y4yehxd/" title="JavaGuide - 结构化输出"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-10</div><div class="title">JavaGuide - 结构化输出</div></div></a></div><div><a href="/2026/08/11/cmsoescaa0000iwyqguib8t8i/" title="JavaGuide - Agent核心概念"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-11</div><div class="title">JavaGuide - Agent核心概念</div></div></a></div><div><a href="/2026/08/05/cmsn10jc50000royq1nnyexc6/" title="HelloAgent - 上下文工程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-05</div><div class="title">HelloAgent - 上下文工程</div></div></a></div><div><a href="/2026/07/06/cmsn10jcc0005royq25unbe04/" title="HelloAgent - 构建你的 Agent 框架"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-06</div><div class="title">HelloAgent - 构建你的 Agent 框架</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">KatzenyaSax</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" href="https://github.com/KatzenyaSax"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Hello</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Agent-%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">Agent 记忆系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.1.</span> <span class="toc-text">记忆系统的设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86"><span class="toc-number">1.1.1.</span> <span class="toc-text">短期记忆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%BF%E6%9C%9F%E8%AE%B0%E5%BF%86"><span class="toc-number">1.1.2.</span> <span class="toc-text">长期记忆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B0%E5%BF%86%E7%9A%84%E9%AB%98%E7%BA%A7%E6%BC%94%E5%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text">记忆的高级演化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E6%80%9D"><span class="toc-number">1.2.1.</span> <span class="toc-text">反思</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E6%80%9D%E5%9D%8D%E7%BC%A9"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">反思坍缩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E5%AE%9E%E5%A4%A7%E4%BA%8E%E5%8F%8D%E6%80%9D"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">事实大于反思</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E6%88%90%E3%80%81%E5%9B%BA%E5%8C%96%E3%80%81%E9%81%97%E5%BF%98"><span class="toc-number">1.2.2.</span> <span class="toc-text">合成、固化、遗忘</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%97%E5%BF%98%E6%9C%BA%E5%88%B6%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">遗忘机制的实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BF%86%E6%A3%80%E7%B4%A2"><span class="toc-number">1.3.</span> <span class="toc-text">优化记忆检索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E6%A3%80%E7%B4%A2"><span class="toc-number">1.3.1.</span> <span class="toc-text">混合检索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE%E8%BF%87%E6%BB%A4"><span class="toc-number">1.3.2.</span> <span class="toc-text">元数据过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E8%A7%86%E6%A3%80%E7%B4%A2%E9%93%BE%E8%B7%AF"><span class="toc-number">1.3.3.</span> <span class="toc-text">多重视检索链路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E7%BA%A7%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F%E8%A6%81%E7%82%B9"><span class="toc-number">1.4.</span> <span class="toc-text">生产级记忆系统要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown"><span class="toc-number">1.5.</span> <span class="toc-text">Markdown</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CLAUDE-md"><span class="toc-number">1.5.1.</span> <span class="toc-text">CLAUDE.md</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%AA%E4%BA%9B%E8%AF%A5%E5%AD%98%EF%BC%8C%E5%93%AA%E4%BA%9B%E4%B8%8D%E8%AF%A5%E5%AD%98"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">哪些该存，哪些不该存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%99%E5%87%BA%E8%A7%84%E8%8C%83%E6%A1%88%E4%BE%8B"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">给出规范案例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B9%A6%E5%86%99%E6%97%B6%E6%8C%89%E7%85%A7%E9%A1%B9%E7%9B%AE%E6%83%AF%E4%BE%8B"><span class="toc-number">1.5.1.3.</span> <span class="toc-text">书写时按照项目惯例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%EF%BC%9API-Agent"><span class="toc-number">1.6.</span> <span class="toc-text">案例分析：PI Agent</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Context"><span class="toc-number">1.6.1.</span> <span class="toc-text">Context</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jsonl"><span class="toc-number">1.6.2.</span> <span class="toc-text">jsonl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jsonl-%E7%9A%84%E5%8E%8B%E7%BC%A9"><span class="toc-number">1.6.3.</span> <span class="toc-text">jsonl 的压缩</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/15/cmsy8plac0000g4yqgtbl4v9f/" title="JavaGuide - 提示词工程 &amp; 上下文工程">JavaGuide - 提示词工程 &amp; 上下文工程</a><time datetime="2026-08-15T09:07:14.000Z" title="发表于 2026-08-15 17:07:14">2026-08-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/15/cmsoescac0001iwyq7u81d34v/" title="JavaGuide - Agent记忆系统">JavaGuide - Agent记忆系统</a><time datetime="2026-08-15T09:02:59.000Z" title="发表于 2026-08-15 17:02:59">2026-08-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/11/cmsoescaa0000iwyqguib8t8i/" title="JavaGuide - Agent核心概念">JavaGuide - Agent核心概念</a><time datetime="2026-08-11T06:41:22.000Z" title="发表于 2026-08-11 14:41:22">2026-08-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/10/cmsn10jce000broyq6y4yehxd/" title="JavaGuide - 结构化输出">JavaGuide - 结构化输出</a><time datetime="2026-08-10T09:22:56.000Z" title="发表于 2026-08-10 17:22:56">2026-08-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/05/cmsn10jc50000royq1nnyexc6/" title="HelloAgent - 上下文工程">HelloAgent - 上下文工程</a><time datetime="2026-08-05T05:26:30.000Z" title="发表于 2026-08-05 13:26:30">2026-08-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By KatzenyaSax</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
