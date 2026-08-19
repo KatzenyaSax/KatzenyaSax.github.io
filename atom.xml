@@ -6,7 +6,7 @@
   <link href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/"/>
-  <updated>2026-08-18T07:19:03.971Z</updated>
+  <updated>2026-08-18T10:09:56.561Z</updated>
   <id>https://github.com/KatzenyaSax/KatzenyaSax.github.io/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaGuide - MCP</title>
+    <link href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/08/18/cmszve4e30000joyqe86kf56q/"/>
+    <id>https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/08/18/cmszve4e30000joyqe86kf56q/</id>
+    <published>2026-08-18T10:09:31.000Z</published>
+    <updated>2026-08-18T10:09:56.561Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="MCP"><a href="#MCP" class="headerlink" title="MCP"></a>MCP</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;MCP&quot;&gt;&lt;a href=&quot;#MCP&quot; class=&quot;headerlink&quot; title=&quot;MCP&quot;&gt;&lt;/a&gt;MCP&lt;/h1&gt;</summary>
+      
+    
+    
+    
+    
+    <category term="LLM" scheme="https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/LLM/"/>
+    
+    <category term="JavaGuide" scheme="https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/JavaGuide/"/>
+    
+    <category term="Agent" scheme="https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/Agent/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaGuide - Skill</title>
+    <link href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/08/18/cmszve4e50001joyq5v0fabxu/"/>
+    <id>https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/08/18/cmszve4e50001joyq5v0fabxu/</id>
+    <published>2026-08-18T07:33:16.000Z</published>
+    <updated>2026-08-19T09:09:23.823Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Skill"><a href="#Skill" class="headerlink" title="Skill"></a>Skill</h1><p><a href="https://javaguide.cn/ai/agent/skills.html">Agent Skills 是什么？和 Prompt、MCP 到底差在哪？</a></p><h2 id="Skill-1"><a href="#Skill-1" class="headerlink" title="Skill"></a>Skill</h2><h3 id="本质"><a href="#本质" class="headerlink" title="本质"></a>本质</h3><p>本质：一串 Prompt，告诉 LLM 某个任务该怎么做（经过哪些步骤、怎么才算合格等），相当于一个用自然语言描述的 Workflow。</p><p>一个 Skill 通常采用文件夹存储，其结构如下：</p><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">skill-name/</span><br><span class="line">├── SKILL.md          # 主文件，触发时加载</span><br><span class="line">├── scripts/          # 实用脚本（执行，不需要加载到上下文）</span><br><span class="line">├── references/       # 参考资料（按需加载）</span><br><span class="line">└── assets/           # 模板和静态文件（按需加载）</span><br></pre></td></tr></table></figure><p>SKILL.md 是正文，每次调用时加载到 Context 中。</p><h3 id="元数据"><a href="#元数据" class="headerlink" title="元数据"></a>元数据</h3><p>Skill.md 的内容包含元数据和正文，元数据举个例子 matt 的 teach 如下：</p><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\---</span><br><span class="line">name: teach</span><br><span class="line">description: Teach the user a new skill or concept, within this workspace.</span><br><span class="line">disable-model-invocation: true</span><br><span class="line">argument-hint: &quot;What would you like to learn about?&quot;</span><br><span class="line">\---</span><br></pre></td></tr></table></figure><p>元数据是用来一句话告诉 LLM 这个 skill 是干嘛的、什么时候用。</p><h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>正文则是很常规的 markdown 格式，定义了工作流和注意事项。</p><p>正文的长度，A 畜建议不超过 500 行，多余的可以引用独立文件，用渐进式披露按需加载。比如：</p><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## 高级功能</span></span><br><span class="line"></span><br><span class="line"><span class="strong">**表单填充**</span>：完整指南请参阅 [<span class="string">FORMS.md</span>](<span class="link">FORMS.md</span>)</span><br><span class="line"></span><br><span class="line"><span class="strong">**API 参考**</span>：所有方法请参阅 [<span class="string">REFERENCE.md</span>](<span class="link">REFERENCE.md</span>)</span><br></pre></td></tr></table></figure><h2 id="Skill-加载"><a href="#Skill-加载" class="headerlink" title="Skill 加载"></a>Skill 加载</h2><p>Skill 的加载分为两个阶段，第一个阶段是向 Agent 报道注册，让 Agent 知道有这么个 Skill；第二个阶段则是真正调用 Skill 时，将正文加载到 Context 内；还有一个额外阶段，渐进式披露地将 Skill 正文中的引用文段按需加载到 Context。</p><p>以 Pi agent 和 claude code 为例子，两者在第一阶段的加载类似，都是在构建 Context 前扫描所有 skill 的元数据，加入元数据表单然后拼接到 Context，不会直接把正文塞进去，依靠渐进式披露来按需加载 Skill。不过，pi 的 skill 表单明确是拼接到 System prompt 的；而 cc 的 skill 表单具体怎么加入的则未知，cc 没有开源，相关只给了一个 <code>注入上下文</code> 这个描述。</p><p>当 Skill 被调用，无论是被 LLM 渐进式披露，还是用户手动调用，就顺着 Skill 元数据表单里面的 <code>path</code> 找 SKILL.md，将其加入 Context。</p><p>最后，是额外阶段中的引用文段，也可以说是 Resource，和第二阶段没啥区别，都是渐进式披露，然后到引用的 path 找原文，加载到 Context。</p><h2 id="Skill-路由"><a href="#Skill-路由" class="headerlink" title="Skill 路由"></a>Skill 路由</h2><h3 id="Skill-路由是什么"><a href="#Skill-路由是什么" class="headerlink" title="Skill 路由是什么"></a>Skill 路由是什么</h3><p>Skill 路由是什么？就是 LLM 判断自己需要加载哪个 Skill 的机制，一般来说 Skill 路由并没有固定的形态，因为从实践来看，LLM 自行判断调用哪个 Skill 是一种路由方式；由服务端逻辑根据 query 强制加载 Skill 也是一种路由方式……总而言之，我们不能机械地将 <strong>Skill 路由</strong>与 <strong>LLM 自行判断</strong>划等号。</p><h3 id="Skill-太多怎么提高召回率"><a href="#Skill-太多怎么提高召回率" class="headerlink" title="Skill 太多怎么提高召回率"></a>Skill 太多怎么提高召回率</h3><p>尽管 Skill 可以通过 LLM 自行判断，但是这只适用于 Skill 较少、Skill 之间功能较为独立时的状况，若 Skill 数量多、功能之间有交叉时——一般说明这是较大型的项目，LLM 利用渐进式披露来自行判断的路由方法很有可能失效，这个时候就有必要在服务端做 Skill 路由了。</p><p>目前行业内的普遍做法是：<code>候选集生成 → 召回 → 重排 → 约束过滤 → 激活少量 Skill → LLM 执行</code>。</p><ol><li><p>候选集生成+召回，候选集可以是所有是 Skill，也可以是任何规则的 Skill 聚类。召回就是根据 query 查询候选集内的相关性 top-k 的 Skill，这一步可以选用不同的查询技术，比如 elasticsearch 倒排索引；或者更古早的关键词索引；现在用得多的也有向量查询等。</p></li><li><p>重排，不过为啥还要有这一步？前面的召回中，不是应该已经按照概率输出了吗？这就是目前主流的 <strong>retrieval 和 routing 分开</strong>。</p></li><li><p>约束过滤，这一步主要是防止向量检索出现的<strong>向量上相近，语义上却无关</strong>的问题，好比哈希，不同的对象有可能计算得到相同的哈希值，而约束过滤就是在检索结果之后再加一层校验，滤除语义无关的候选。</p></li></ol><p>架构：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">              User Query</span><br><span class="line">                  │</span><br><span class="line">                  ▼</span><br><span class="line">         ┌────────────────┐</span><br><span class="line">         │ Query Analysis │</span><br><span class="line">         └───────┬────────┘</span><br><span class="line">                 │</span><br><span class="line">       ┌─────────┴─────────┐</span><br><span class="line">       │                   │</span><br><span class="line">   hard signals         semantic</span><br><span class="line">文件类型/权限/领域      embedding/BM25</span><br><span class="line">       │                   │</span><br><span class="line">       └─────────┬─────────┘</span><br><span class="line">                 ▼</span><br><span class="line">          Candidate Recall</span><br><span class="line">              Top 20~100</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">            Reranker</span><br><span class="line">              Top 5~10</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">          Policy Filter</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">           Skill Router</span><br><span class="line">                 │</span><br><span class="line">          Top 1~3 Skills</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">         Load / Activate</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">        Context Assembly</span><br><span class="line">                 │</span><br><span class="line">                 ▼</span><br><span class="line">                LLM</span><br></pre></td></tr></table></figure><h3 id="多层召回"><a href="#多层召回" class="headerlink" title="多层召回"></a>多层召回</h3><p>就是将普遍做法多层执行，比如 1000 个 skill，不要直接从 1000 里面找 1 或多个，而是先从 1000 个找 50 个，再从 50 个找 1 个……</p><h3 id="Skill-Bundle-Skill-Pack"><a href="#Skill-Bundle-Skill-Pack" class="headerlink" title="Skill Bundle &#x2F; Skill Pack"></a>Skill Bundle &#x2F; Skill Pack</h3><p>这是 A 畜自己推崇和使用的一种做法，不要把成千上万的 Skill 都放在同一个文件夹下，而是根据不同的领域，分为多个 package，依旧凭借 LLM 的渐进式披露，自己去找。</p><p>然后，package 里面又可分 package……</p><h2 id="Skill-注意事项"><a href="#Skill-注意事项" class="headerlink" title="Skill 注意事项"></a>Skill 注意事项</h2><h3 id="Skill-≠-Readme"><a href="#Skill-≠-Readme" class="headerlink" title="Skill ≠ Readme"></a>Skill ≠ Readme</h3><p>Skill 是自然语言定义的 Workflow，不要写成 Readme。</p><h3 id="一个-Skill-解决一个问题"><a href="#一个-Skill-解决一个问题" class="headerlink" title="一个 Skill 解决一个问题"></a>一个 Skill 解决一个问题</h3><p>最理想的情况是，每个 skill 都能解决一个独立的问题，这是为了减少 skill 之间的责任重叠，利于 LLM 选择 Skill。</p><p>不过，很多情况下，上层 Skill 需要利用 下层 Skill 的能力，这个时候不要耦合式地在前者复制粘贴后者的正文，而是仍然使用引用式。这里给个例子，matt 的 <code>grill-with-docs</code>：</p><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Call the Skill tool twice, for &quot;grilling&quot; and &quot;domain-modeling&quot;.</span><br></pre></td></tr></table></figure><h3 id="Skill-里面可选分支太多"><a href="#Skill-里面可选分支太多" class="headerlink" title="Skill 里面可选分支太多"></a>Skill 里面可选分支太多</h3><p>什么叫可选分支太多？就是让 LLM 酌情选择的选项，比如：</p><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">你可以使用 pypdf、pdfplumber、PyMuPDF 或 pdf2image 处理 PDF。</span><br></pre></td></tr></table></figure><p>这是不对的，因为 LLM 会额外耗费注意力在这些组件的选择上。我们要使用明确的分支，有条件的分支，例如：</p><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">首先判断该 pdf 是不是扫描版：</span><br><span class="line"><span class="bullet">    -</span> 如果是扫描版，需要 OCR，再改用 pdf2image + pytesseract；</span><br><span class="line"><span class="bullet">    -</span> 如果不是，则直接使用 pdfplumber 提取文本。</span><br></pre></td></tr></table></figure><h3 id="专有名词保持上下一致"><a href="#专有名词保持上下一致" class="headerlink" title="专有名词保持上下一致"></a>专有名词保持上下一致</h3><p>例如前文使用“API 端点”后，后文不再改写为 URL、API 路由或路径。</p><p>否则，LLM 会额外耗费注意力。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Skill&quot;&gt;&lt;a href=&quot;#Skill&quot; class=&quot;headerlink&quot; title=&quot;Skill&quot;&gt;&lt;/a&gt;Skill&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://javaguide.cn/ai/agent/skills.html&quot;&gt;Agent </summary>
+      
+    
+    
+    
+    
+    <category term="LLM" scheme="https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/LLM/"/>
+    
+    <category term="JavaGuide" scheme="https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/JavaGuide/"/>
+    
+    <category term="Agent" scheme="https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/Agent/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaGuide - 提示词工程 &amp; 上下文工程</title>
