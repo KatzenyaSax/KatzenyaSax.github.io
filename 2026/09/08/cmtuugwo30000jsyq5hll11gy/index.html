@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>JavaGuide - Agent 面试题总结 | KatzenyaSax: Hello!</title><meta name="author" content="KatzenyaSax"><meta name="copyright" content="KatzenyaSax"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Agent面试题总结Agent 基础 AI Agent 是什么？和普通 Chatbot 有什么区别？  一句话：Agent 是一套能够感知环境、理解任务、自主规划、能调用一定外部工具最终完成任务的一套系统。 区别：普通的 ChatBot 围绕 “对话”，其中只有 LLM 一个环节，即 用户输入 -&gt; LLM处理 -&gt; LLM直接输出；而 Agent 则是 用户输入 -&gt; LLM理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaGuide - Agent 面试题总结">
+<meta property="og:url" content="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/09/08/cmtuugwo30000jsyq5hll11gy/index.html">
+<meta property="og:site_name" content="KatzenyaSax: Hello!">
+<meta property="og:description" content="Agent面试题总结Agent 基础 AI Agent 是什么？和普通 Chatbot 有什么区别？  一句话：Agent 是一套能够感知环境、理解任务、自主规划、能调用一定外部工具最终完成任务的一套系统。 区别：普通的 ChatBot 围绕 “对话”，其中只有 LLM 一个环节，即 用户输入 -&gt; LLM处理 -&gt; LLM直接输出；而 Agent 则是 用户输入 -&gt; LLM理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg">
+<meta property="article:published_time" content="2026-09-08T01:20:17.000Z">
+<meta property="article:modified_time" content="2026-09-10T01:24:02.685Z">
+<meta property="article:author" content="KatzenyaSax">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="JavaGuide">
+<meta property="article:tag" content="Agent">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg"><link rel="shortcut icon" href="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/fiveDragonTale.png"><link rel="canonical" href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/09/08/cmtuugwo30000jsyq5hll11gy/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JavaGuide - Agent 面试题总结',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-09-10 09:24:02'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="KatzenyaSax: Hello!" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="KatzenyaSax: Hello!"><span class="site-name">KatzenyaSax: Hello!</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JavaGuide - Agent 面试题总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-09-08T01:20:17.000Z" title="发表于 2026-09-08 09:20:17">2026-09-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-10T01:24:02.685Z" title="更新于 2026-09-10 09:24:02">2026-09-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JavaGuide - Agent 面试题总结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Agent面试题总结"><a href="#Agent面试题总结" class="headerlink" title="Agent面试题总结"></a>Agent面试题总结</h1><h2 id="Agent-基础"><a href="#Agent-基础" class="headerlink" title="Agent 基础"></a>Agent 基础</h2><blockquote>
+<p>AI Agent 是什么？和普通 Chatbot 有什么区别？</p>
+</blockquote>
+<p><strong>一句话</strong>：Agent 是一套能够感知环境、理解任务、自主规划、能调用一定外部工具最终完成任务的一套系统。</p>
+<p><strong>区别</strong>：普通的 ChatBot 围绕 “对话”，其中只有 LLM 一个环节，即 <code>用户输入 -&gt; LLM处理 -&gt; LLM直接输出</code>；而 Agent 则是 <code>用户输入 -&gt; LLM理解任务 -&gt; LLM规划任务 -&gt; 调用工具 -&gt; 完成执行</code> 的复杂流程，LLM 的输出不会直接一次性展示给用户，而是用于完成任务，这就是两者的核心区别：前者至少为了生成内容，后者则是完成任务。</p>
+<p><strong>细分维度</strong>：可以从以下维度对比：核心目标、行为模式（文本生成 vs 理解+决策+执行）、工具调用、自主性、记忆、任务复杂度、环境感知、反馈闭环。</p>
+<p><strong>更深</strong>：Agent 的核心组成？下一道题</p>
+<blockquote>
+<p>Agent &#x3D; LLM + Planning + Memory + Tools + Enviorment + Action Loop 这条公式怎么理解？</p>
+</blockquote>
+<p><strong>一句话</strong>：即目前 Agent 的主流架构。</p>
+<p><strong>细分</strong>：1.LLM 是 Agent 的大脑、核心；2.Planning 负责 Agent 对于任务的理解和拆解能力；3.Memory 赋予 Agent 记忆能力，让其对当前以及之前的任务有了清晰的认知；4.Tool 赋予 Agent 与外部直接交互的能力；5.Enviorment 赋予了 Agent 对外部的感知（例如能够通过 Tool:read 了解工作区的文件系统、edge 浏览器当前网页状态等）；6.Action Loop 则是当前 Agent 特别聚焦的一个能力，其赋予 Agent 通过当前和以前的任务决定下一步任务的能力。</p>
+<blockquote>
+<p>Agent Loop 的完整流程是什么？</p>
+</blockquote>
+<p><strong>一句话</strong>：LLM 解读上下文 -&gt; LLM 理解、规划当前任务 -&gt; LLM 调用工具 -&gt; LLM 获得工具结果 -&gt; 观察环境判断是否完成任务从而决定结束任务还是自我调用继续迭代</p>
+<blockquote>
+<p>Agent 和传统编程、Workflow 的核心区别是什么？</p>
+</blockquote>
+<p><strong>一句话</strong>：传统编程完全由人类智慧进行决策、执行；Workflow 则是人类给出方向、或是有向无环图固定节点流程，照着执行就行；而 Agent 则是将决策与执行闭环完全交给 LLM。</p>
+<blockquote>
+<p>ReAct、Plan-and-Execute、Reflection、Multi-Agent 分别适合什么场景？</p>
+</blockquote>
+<p><strong>一句话</strong>：1.ReAct 适用于流程不固定的任务，例如 Coding、纠错等；2.Plan-and-Execute 适用于长程任务，因为可以预先设想到一条宏观路线；3.Reflection 适用于对结果质量要求高、或者是执行易出错的任务；4.Multi-Agent 适用于任务可拆分成独立不耦合的子任务，或者有若干个领域不同、硬性要求不同的任务。</p>
+<p><strong>优缺点</strong>：1.ReAct：可动态调整路线-只能串行执行；2.Plan-and-Execute：事先计划利于宏观把握任务-plan 本身质量不可信；3.Reflection：轻量级可无感集成进其他模式-容易陷入反思滑坡而刻意谄媚；4.Multi-Agent：适合多任务并行场景- Agent 通信问题（A2A协议解决） &amp; Agent 之间结论易互相冲突</p>
+<blockquote>
+<p>Tools 注册时，工具 description 为什么很关键？</p>
+</blockquote>
+<p><strong>一句话</strong>：description 告诉 LLM 什么时候应该调用这个工具，如果只提供 ToolName， LLM 很容易忽略该工具最终无法完成任务。</p>
+<p><strong>description应该写得清楚</strong>：正因为 description 是告诉 LLM <strong>什么时候调用工具</strong>的自然语言描述性文本，所以才需要能让 LLM 简单理解。例如 <code>搜索公开互联网信息，适用于新闻、网页、实时资料查询。不要用于搜索公司内部信息</code>，而不是 <code>这是一个可以帮助你进行搜索的搜索工具，它支持互联网搜索，可以搜索很多不同类型的信息，当你想获得信息的时候可能可以考虑使用它……</code>。事实上，实际上最会写 skill 的 matt 就是这么干的，<code>teach</code> skill 的 description：<code>Teach the user a new skill or concept, within this workspace.</code>很清晰明了。</p>
+<blockquote>
+<p>什么时候用纯 Agent，什么时候用 Workflow 或 Agentic Workflow？</p>
+</blockquote>
+<p><strong>一句话</strong>：Workflow 适合于有固定严格流程的任务（其实就是绝大多数前 AI 时代的业务）；Agent 适用于无法预先设想工作流程，需要按照任务推进状态动态调整任务方向；Agentic Workflow 则是将前面二者结合，适合整体流程可以大致确定，但其中节点的具体实现可以由 Agent 自行决定。</p>
+<p><strong>使用的本质原则</strong>：能写死就别用 LLM，是为了安全和性能考量。</p>
+<blockquote>
+<p>Multi-Agent 协作的主要问题是什么？为什么生产里不能盲目上多 Agent？</p>
+</blockquote>
+<p><strong>一句话</strong>：主要问题在于 Agent 之间的协作难以量化、可控，很容易出现问题，在生产环境中绝大多数任务其实都能用固定 Workflow 和单一 Agent 完成，多 Agent 不仅不能起到正面作用，反而带来一系列问题。</p>
+<p><strong>带来的问题</strong>：1.通信成本，具体来说硬件性能、时间成本、token 花销都会加剧；2.状态同步问题，多 Agent 本质上就是并行任务，此时就必须考虑到同步和一致性问题（虽然说可以采用一主多从 Agent，由主 Agent 统一分配任务、接收结果）；3.任务不容易拆分，子任务之间需要非耦合可独立并行，一个大的复杂任务恰好不容易拆分。</p>
+<h2 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h2><blockquote>
+<p>Agent 的短期记忆和长期记忆有什么区别？</p>
+</blockquote>
+<p><strong>一句话</strong>：短期记忆解决 <code>当前任务状态</code>，长期记忆则解决 <code>跨会话、跨任务的信息共享</code>。也就是说，前者满足当前需求，后者满足今后需求。</p>
+<p><strong>长期记忆&amp;短期记忆</strong>：短期记忆就是工作记忆，存储当前会话任务、上下文、每个 Message、工具结果、任务状态等；长期记忆就是情景记忆和语义记忆，情景记忆存储 <code>某某会话的重要信息</code>，目的是让 Agent 能够回忆起那次会话，语义记忆存储的是所有会话通用的知识，例如用户偏好、项目组件版本号、项目架构等。</p>
+<blockquote>
+<p>Agent 记忆系统要解决哪些核心问题？</p>
+</blockquote>
+<p><strong>一句话</strong>：要解决哪些记忆需要记录、检索、遗忘、更新，以支援严格的上下文。</p>
+<p><strong>问题</strong>：</p>
+<ol>
+<li><p>哪些记忆需要记？需要 LLM 有效筛选，很大程度取决于 LLM 自身的能力。</p>
+</li>
+<li><p>怎么检索？这个问题取决于记忆如何存储，可以原始自然语言存储、也可以转为 JSONL 存储、也可以采用向量化存储等，但是不同的存储方式会极大影响记忆的召回率。</p>
+</li>
+<li><p>何时触发检索？</p>
+</li>
+<li><p>记忆冲突怎么办？</p>
+</li>
+<li><p>什么时候遗忘？</p>
+</li>
+<li><p>记忆有错误怎么办？</p>
+</li>
+<li><p>记忆该如何组织进上下文？</p>
+</li>
+<li><p>性能问题。</p>
+</li>
+</ol>
+<blockquote>
+<p>向量记忆和 Markdown 记忆分别适合什么场景？</p>
+</blockquote>
+<p><strong>一句话</strong>：向量记忆适合<strong>信息量大</strong>、<strong>语义检索</strong>需求强、需要根据上下文找“相关内容”的场景（例如大量书籍文本向量化存储）；Markdown 适合规模较小、结构清晰、需要在长期维护不断读写的场景（例如 docs.md 等 Agent 自己维护的 md 文件）</p>
+<p><strong>向量化</strong>：由 Embedding 模型处理后，语义越近的文本在高维映射的向量中的距离越近，这是向量检索的理论性来源，所以使用数学运算就能检索到语义上和被搜索文本相近的文本。</p>
+<blockquote>
+<p>Auto Memory 是什么？它为什么不能无限自动写入？</p>
+</blockquote>
+<p><strong>一句话</strong>：Auto Memory 指的是 Agent 在工作过程中识别有价值的记忆并将其持久化的机制；它不能无限写入是因为记忆一旦过多会产生诸如<strong>记忆冲突</strong>、<strong>错误记忆</strong>、<strong>召回率降低</strong>、<strong>性能花销增大</strong>等问题。</p>
+<p><strong>Memory Policy</strong>：Agent 用于评判一个记忆是否 <code>“有价值”</code> 的标准，其核心即：<strong>是否对未来的任务有帮助？</strong></p>
+<blockquote>
+<p>哪些团队共享记忆适合走 Git 和 Code Review，哪些更适合数据库？</p>
+</blockquote>
+<p><strong>一句话</strong>：结构清晰稳定、需要人工审查的<strong>知识</strong>适合走 git（例如 Agent 随时维护的 md 文件）；而软件过程中产生的高频 io 的记忆（比如某用户的偏好、某次会话的上下文、Trace 等），则使用数据库显然更合适。</p>
+<p><strong>git的限制</strong>：git 确实可以很轻松地管理不同的 diff，但是没法处理高并发的信息 io，倘若将高频变化的信息用 git 存储，无法随时即写即存，需要 reviewr 审核之后才能并入。</p>
+<blockquote>
+<p>如何避免长期记忆污染上下文？</p>
+</blockquote>
+<p><strong>一句话</strong>：核心举措有两条，只记忆有用的信息 &amp; 只检索需要的记忆。</p>
+<p><strong>上下文污染的原因</strong>：记忆太长，导致有效记忆的召回率过低；同时，过多的记忆更容易出现冲突和错误，影响上下文质量。</p>
+<blockquote>
+<p>记忆压缩、记忆过期、记忆冲突应该怎么处理？</p>
+</blockquote>
+<p><strong>一句话</strong>：压缩是精炼与总结；遗忘通过 TTL、时间衰减、主动清退机制进行；冲突则通过时间、来源、佐证确定权威版本，必要时也可标注为历史版本并保留而非覆盖。</p>
+<p><strong>三者作用</strong>：压缩解决“太多”，过期解决“太旧”，冲突解决“打架”。</p>
+<blockquote>
+<p>面试里怎么讲“有记忆”不是简单保存聊天记录？</p>
+</blockquote>
+<p><strong>一句话</strong>：记忆的存在是用来支持 Agent 当前与未来的工作，也就是说与 Agent 工作无用的信息应该被剔除。聊天记录内包含了大量的无用信息（比如用户在某时查询了某地的天气、某个网页响应速度发生了异常等），LLM 进行剔除，剩余的有用信息再经过提炼总结就是记忆。</p>
+<h2 id="Context-Engineering"><a href="#Context-Engineering" class="headerlink" title="Context Engineering"></a>Context Engineering</h2><blockquote>
+<p>Prompt Engineering 和 Context Engineering 有什么区别？</p>
+</blockquote>
+<p><strong>一句话</strong>：Prompt Engineering 聚焦于给 LLM 提供一种完成任务的<strong>范式</strong>（比如教 LLM 怎么完成一件任务）；而 Context Engineering 则聚焦于动态地为 LLM 提供其所需的上下文信息，让 LLM 在上下文的基础上完成任务（比如告诉 LLM 所有的信息，然后直接向他提出任务要求）。</p>
+<blockquote>
+<p>Prompt 四要素 Role、Task、Context、Format 分别解决什么问题？</p>
+</blockquote>
+<p><strong>一句话</strong>：Role 通过渐进式披告诉 LLM 应该聚焦于哪些领域；Task 是任务；Context 是 LLM 完成 Task 所需要的信息；Format 则规定了输出的格式</p>
+<blockquote>
+<p>Few-Shot、CoT、任务分解、结构化输出分别适合什么场景？</p>
+</blockquote>
+<p><strong>一句话</strong>：这些都是属于 Prompt Engineering 的小技巧。Few-Shot 适合输出格式严格的任务；CoT 适用于能分解为多个先后步骤的任务；任务分解适用于可以拆分为多个子任务的任务；结构化输出适用于直接被软件系统消费的任务。</p>
+<blockquote>
+<p>Prompt 注入攻击是什么？常见防护方式有哪些？</p>
+</blockquote>
+<p><strong>一句话</strong>：在 prompt 中注入恶意文本，诱导 LLM 执行可能造成严重后果的危险操作的行为。常见的防护方法分执行层、认知层和决策层。</p>
+<p><strong>细分</strong>：</p>
+<ol>
+<li><p>执行层：将执行环境与物理服务沙箱隔离（docker等）、权限控制（执行权限细分、危险操作需要授权）；</p>
+</li>
+<li><p>认知层：从输入给 LLM 的 prompt 入手，使用 <code>&lt;&gt;</code> <code>[]</code> <code>&#123;&#125;</code> 等隔离不可信的用户 prompt 和可信的系统 prompt；</p>
+</li>
+<li><p>决策层：高危操作（比如数据库crud、转账、发送邮件等），执行前终端，交由人类管理员 Human in Loop 决策是否执行。</p>
+</li>
+</ol>
+<blockquote>
+<p>为什么 Agent 场景下只优化 Prompt 不够？</p>
+</blockquote>
+<p><strong>一句话</strong>：Prompt 是针对于前 Agent 时代的 AI 使用方法，聚焦的是如何教会 LLM 做好一件事，如今的 Agent 其运行则关系到记忆系统、闭环控制、工具调用等模块，单纯地优化 Prompt 已经不再适用 Agent 时代，所以引出了直接针对 Agent 运行的 Context Engineering。</p>
+<blockquote>
+<p>Context Engineering 要解决哪些问题？</p>
+</blockquote>
+<p><strong>一句话</strong>：在 Agent 每一轮的执行中动态地维护 Context 让 Agent 最高效地解决问题。</p>
+<p><strong>维护 Context</strong>：1.动态按需检索记忆；2.对记忆进行压缩、遗忘、更新；3.尽可能提高 Context 的信息密度。</p>
+<blockquote>
+<p>静态规则、动态信息、工具结果、记忆应该如何进入上下文？</p>
+</blockquote>
+<p><strong>一句话</strong>：静态规则直接拼接、动态信息用引用式按需加载、工具结果在 Agent 轮次中动态加载、记忆按照需求检索而非全盘加载。</p>
+<blockquote>
+<p>长任务上下文溢出时，Compaction、结构化笔记、Sub-agent 分别怎么用？</p>
+</blockquote>
+<p><strong>一句话</strong>：Compaction 是将上下文喂给 LLM 精炼，排除没用信息保留高密度有用信息；结构化笔记是将重要信息使用文档记录下来，方便随时更新维护；Sub-agent 是开启一个新的 Agent 实例，只给其任务需要的最简短的上下文，避免其包含过多上下文，让其在较为干净的环境完成任务。</p>
+<h2 id="MCP-Skill"><a href="#MCP-Skill" class="headerlink" title="MCP &amp; Skill"></a>MCP &amp; Skill</h2><blockquote>
+<p>MCP 解决什么问题？为什么常被类比成 AI 领域的 USB-C？</p>
+</blockquote>
+<p><strong>一句话</strong>：MCP 主要解决的是非耦合外部工具的统一注册发现调用和资源共享问题；之所以被类比为 USB-C 是因为它试图统一 Agent 与工具之间的连接方式，结局工具与 Agent 高度耦合的现状。</p>
+<blockquote>
+<p>MCP Client、MCP Server、Host 分别是什么？</p>
+</blockquote>
+<p><strong>一句话</strong>：Host 就是 Agent 所在的软件进程；MCP Client 是 MCP 客户端，Host 调用 Client 与服务端 Server 通信以调用工具、访问资源等操作。Client 和 Server 一一对应，之间通过 JSON RPC 2.0 进行通信。</p>
+<blockquote>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io">KatzenyaSax</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/09/08/cmtuugwo30000jsyq5hll11gy/">https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/09/08/cmtuugwo30000jsyq5hll11gy/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io" target="_blank">KatzenyaSax: Hello!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/JavaGuide/">JavaGuide</a><a class="post-meta__tags" href="/tags/Agent/">Agent</a></div><div class="post_share"><div class="social-share" data-image="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2026/08/19/cmtuugwo40001jsyqcyh8e9o9/" title="JavaGuide - MultiAgent"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaGuide - MultiAgent</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2026/06/25/cmsn10jcb0003royq487wet9b/" title="JavaGuide - 大模型调用工程实践"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-25</div><div class="title">JavaGuide - 大模型调用工程实践</div></div></a></div><div><a href="/2026/06/25/cmsn10jcd0007royqebtc3tx0/" title="JavaGuide - LLM 运行机制"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-06-25</div><div class="title">JavaGuide - LLM 运行机制</div></div></a></div><div><a href="/2026/08/10/cmsn10jce000broyq6y4yehxd/" title="JavaGuide - 结构化输出"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-10</div><div class="title">JavaGuide - 结构化输出</div></div></a></div><div><a href="/2026/08/11/cmsoescaa0000iwyqguib8t8i/" title="JavaGuide - Agent核心概念"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-11</div><div class="title">JavaGuide - Agent核心概念</div></div></a></div><div><a href="/2026/08/15/cmsoescac0001iwyq7u81d34v/" title="JavaGuide - Agent记忆系统"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-15</div><div class="title">JavaGuide - Agent记忆系统</div></div></a></div><div><a href="/2026/08/18/cmsy8plac0000g4yqgtbl4v9f/" title="JavaGuide - 提示词工程 &amp; 上下文工程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-18</div><div class="title">JavaGuide - 提示词工程 &amp; 上下文工程</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">KatzenyaSax</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" href="https://github.com/KatzenyaSax"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Hello</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Agent%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">Agent面试题总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Agent-%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.</span> <span class="toc-text">Agent 基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Memory"><span class="toc-number">1.2.</span> <span class="toc-text">Memory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Context-Engineering"><span class="toc-number">1.3.</span> <span class="toc-text">Context Engineering</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MCP-Skill"><span class="toc-number">1.4.</span> <span class="toc-text">MCP &amp; Skill</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/08/cmtuugwo30000jsyq5hll11gy/" title="JavaGuide - Agent 面试题总结">JavaGuide - Agent 面试题总结</a><time datetime="2026-09-08T01:20:17.000Z" title="发表于 2026-09-08 09:20:17">2026-09-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/19/cmtuugwo40001jsyqcyh8e9o9/" title="JavaGuide - MultiAgent">JavaGuide - MultiAgent</a><time datetime="2026-08-19T10:50:35.000Z" title="发表于 2026-08-19 18:50:35">2026-08-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/18/cmszve4e30000joyqe86kf56q/" title="JavaGuide - MCP">JavaGuide - MCP</a><time datetime="2026-08-18T10:09:31.000Z" title="发表于 2026-08-18 18:09:31">2026-08-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/18/cmszve4e50001joyq5v0fabxu/" title="JavaGuide - Skill">JavaGuide - Skill</a><time datetime="2026-08-18T07:33:16.000Z" title="发表于 2026-08-18 15:33:16">2026-08-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/18/cmsy8plac0000g4yqgtbl4v9f/" title="JavaGuide - 提示词工程 &amp; 上下文工程">JavaGuide - 提示词工程 &amp; 上下文工程</a><time datetime="2026-08-18T07:07:14.000Z" title="发表于 2026-08-18 15:07:14">2026-08-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By KatzenyaSax</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
