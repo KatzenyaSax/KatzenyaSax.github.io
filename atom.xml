@@ -6,7 +6,7 @@
   <link href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/"/>
-  <updated>2026-09-15T01:12:18.162Z</updated>
+  <updated>2026-09-17T07:14:37.199Z</updated>
   <id>https://github.com/KatzenyaSax/KatzenyaSax.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaGuide-RAG</title>
+    <link href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/09/17/cmu574lxm0000qoyq9gqydqiw/"/>
+    <id>https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/09/17/cmu574lxm0000qoyq9gqydqiw/</id>
+    <published>2026-09-17T01:15:22.000Z</published>
+    <updated>2026-09-17T07:14:37.199Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="RAG"><a href="#RAG" class="headerlink" title="RAG"></a>RAG</h1><h2 id="RAG-基础概念"><a href="#RAG-基础概念" class="headerlink" title="RAG 基础概念"></a>RAG 基础概念</h2><p><a href="https://javaguide.cn/ai/rag/rag-basis.html">RAG 基础概念：检索、生成与工程取舍</a></p><p>RAG（Retrieval-Augmented Generation，检索增强生成），就是为用户的 query 匹配更多信息，强化 LLM 是生成。</p><h3 id="基于向量数据库的-RAG-聚焦的核心问题：不同表达、同一语义"><a href="#基于向量数据库的-RAG-聚焦的核心问题：不同表达、同一语义" class="headerlink" title="基于向量数据库的 RAG 聚焦的核心问题：不同表达、同一语义"></a>基于向量数据库的 RAG 聚焦的核心问题：不同表达、同一语义</h3><ul><li><p>知识时效性：能够为停止更新知识的 LLM 提供更新的知识。</p></li><li><p>私有数据：一些私有数据，不可能直接在训练中喂给 LLM，将其部署在外部数据库，更加安全。</p></li><li><p>幻觉问题，严格来说幻觉是 LLM 本身的缺陷，设置 RAG 只能降低幻觉。反而 RAG 系统本身更有可能助长幻觉，比如检索失败，检索错配等问题。</p></li></ul><p>不过，以上三点都是胡扯，这些问题是个数据库都能解决，RAG 或者说目前主流的基于向量数据库的 RAG 系统聚焦的核心反而是<strong>词不一样，但意思一样</strong>问题，就比如 Redis 里面 <code>数据过期了</code> <code>key过期了</code> <code>TTL过了</code>，三个不同的词语对应同一个意思：<code>数据怎么没了</code>，这是传统检索方法无法做到的。</p><p>然而，正因如此，主流 RAG 又面临一个检索准确性的问题，传统的关键词检索，检索出来就百分之百准确，而 RAG 检索大概率同时存在多个语义相同的不同表达。</p><h3 id="RAG-索引增强"><a href="#RAG-索引增强" class="headerlink" title="RAG 索引增强"></a>RAG 索引增强</h3><ol><li><p>接收用户 query。有的系统会对 query 进一步处理，比如假设文档嵌入等，用于优化后续的检索结果。</p></li><li><p>信息检索（<strong>R</strong>），在数据库中进行相似度计算，得到相似度最高的 top-k 信源，之后就是从这些信源中通过重排、过滤等方法，筛选出真正有用的。如果是向量数据库，在检索之前还需要将 query 向量化，以在向量数据库中计算余弦距离。</p></li><li><p>query 增强（<strong>A</strong>），使用检索到的 top-k 信源，补充进 Agent 的 Context。</p></li><li><p>LLM 生成回复（<strong>G</strong>）。</p></li></ol><p>从上述可以发现，其实 RAG 中真正与向量数据库有关的，实则只有检索阶段，只要能够根据语义筛选出 top-k 信息，都可以用来取代向量数据库，这真的对吗？是对的，只要能解决有用信息的检索问题，实际上用什么数据库都无所谓。</p><p>而为什么现在提到 RAG，都会联想到向量数据库呢？这算是很典型了概念污染了，来自于工程实践带来的概念绑定。事实上，向量数据库确实可以很好地解决语义检索问题，如果有需要的场景大大方方用就是最好方案；如果不用强行上，也没必要用向量数据库。</p><h3 id="向量数据库的索引创建"><a href="#向量数据库的索引创建" class="headerlink" title="向量数据库的索引创建"></a>向量数据库的索引创建</h3><p>这一步研究如何将大段文本存入向量数据库。</p><ol><li><p>接受文档。</p></li><li><p>文档清洗，目的是校验文件合法性，同时去除结构化语言痕迹，比如 html 标签、json 标签（按需保留），以及各种特殊字符，只保留纯粹的可解析文档内容。</p></li><li><p>增强文档，为文档补充元数据 metadata（document-level metadata），例如时间戳、大小、分类标签等，便于在后续检索中过滤。</p></li><li><p>文档切片，将文档整体，根据特定规则切分成若干 chunk，然后立刻补充 metadata（chunk-level metadata）。chunk 是向量数据库中的最小可检索单元，后续所有的检索结果都是 chunk。</p></li><li><p>向量化，将 chunks 发给 embedding model，将语义信息映射为高维向量。</p></li><li><p>将 chunk、metadata、向量，一并存储进向量数据库。</p></li></ol><p>索引的创建，如果向量存储服务不对用户开放，数据由团队维护，则一般离线完成，团队选取时间跑定时任务，将新增和变更的文档索引向量化；如果有对用户开放的业务，在线完成也是可行的。</p><h3 id="Embedding-模型"><a href="#Embedding-模型" class="headerlink" title="Embedding 模型"></a>Embedding 模型</h3><p>Embedding 模型是向量数据库的基础，它能将文按照语义，映射为高维向量，我们理想的效果是文本语义越接近，在向量空间中的距离也越近，向量检索时也越容易找到相似语义的文本。</p><p>向量的维度，常见的有 768、1024、1536、3072，维度大小确实会影响计算、检索、索引化的成本，但是不能简单地认为 “维度越高，效果越好”，需要以选取的 embedding 模型为参考对象。</p><p>模型的不同，也会直接影响使用，闭源模型无法私有化部署，适合小型业务、方便使用；开源模型可自行部署，适合于保密业务。</p><p>在实践中，以最终召回率为导向，在测试中确定最佳模型方案。</p><h3 id="相似度计算"><a href="#相似度计算" class="headerlink" title="相似度计算"></a>相似度计算</h3><p>我们在实践中一般使用余弦距离判断语义关联，除了这种计算还有另外两种常见的方法：内积和欧氏距离。</p><table><thead><tr><th>度量方式</th><th>含义</th><th>特点</th></tr></thead><tbody><tr><td>余弦相似度（Cosine Similarity）</td><td>看两个向量方向是否一致</td><td>对向量长度不敏感，RAG 场景最常用</td></tr><tr><td>内积（Inner Product &#x2F; Dot Product）</td><td>看两个向量对应维度乘积之和</td><td>如果向量已经 L2 归一化，内积和余弦相似度在排序结果上通常等价</td></tr><tr><td>欧氏距离（L2 Distance）</td><td>看两个点在空间中的绝对距离</td><td>对向量幅度更敏感，适合模型或索引明确按 L2 训练 &#x2F; 优化的场景</td></tr></tbody></table><p>也就是说，三者虽然都可以用来计算向量之间的<strong>关联</strong>，但是侧重点不同，计算方法也不同。</p><p>余弦距离侧重于计算向量的方向是否靠近，其计算结果也只与向量夹角相关，<strong>这也是绝大多数 Embedding 模型被刻意训练的结果</strong>，我们的需求<strong>语义检索</strong>，正好适合用向量间距离表示，因为它不包含其他的例如长度、距离的干扰，用来代指单一的语义关联再适合不过了。所以之所以在绝大多数场景下都使用余弦距离判断相似度。</p><p>内积则同时混杂了向量方向和长度，两个因素共同作用下，关注的重心就与我们的需求偏离了。但是，倘若向量归一化，长度都为1，此时我们可以认为内积与余弦距离等价，都可以用于计算语义关联。</p><h3 id="RAG-和传统搜索的最大区别"><a href="#RAG-和传统搜索的最大区别" class="headerlink" title="RAG 和传统搜索的最大区别"></a>RAG 和传统搜索的最大区别</h3><p>双方核心机制都是信息检索，最大分歧是后续怎么样：传统搜索是直接展示 top-k 的结果，让用户自己确认关联度（排序器）；RAG 则是将 top-k 结果发给 LLM 生成一个答案然后再发给用户（总结器）。</p><p>前面提到，RAG 的定义中并不一定严格要求向量数据库，采用传统搜索引擎常用的方法完全可以，所以 RAG 和传统搜索大可不必看作两种互相替代的方法。</p><h3 id="RAG-vs-微调"><a href="#RAG-vs-微调" class="headerlink" title="RAG vs. 微调"></a>RAG vs. 微调</h3><table><thead><tr><th>维度</th><th>RAG</th><th>微调（Fine-tuning）</th></tr></thead><tbody><tr><td>知识更新</td><td>更新知识库或向量索引即可</td><td>通常需要重新准备数据并训练</td></tr><tr><td>数据安全</td><td>知识保留在外部库，按需检索</td><td>训练样本中的模式和部分知识会固化到微调模型参数中，敏感数据进入训练流程前需要额外评估合规和数据治理要求</td></tr><tr><td>幻觉控制</td><td>可引用原文，便于溯源和校验</td><td>模型仍可能编造，且引用来源不天然可见</td></tr><tr><td>成本结构</td><td>检索成本 + 输入 Token 成本 + 向量库成本</td><td>数据标注、训练 GPU、评测和版本管理成本</td></tr><tr><td>适合场景</td><td>知识密集型问答、企业知识库、法规制度、产品文档、实时信息</td><td>风格适配、格式控制、领域术语对齐、固定任务行为优化</td></tr><tr><td>主要风险</td><td>检索不到、召回噪声、权限过滤复杂</td><td>数据过拟合、知识过期、训练和回滚成本高</td></tr></tbody></table><p>微调有一定优势，但长期来看是一种不好持续维护的方法。</p><p>通过微调将知识直接刻入模型参数，好处是模型记得很牢固，但是仍然无法解决幻觉问题，适合存那种规范行为的知识，比如各种 schema、各种回答的模板、解决特定问题的步骤，又或者团队内部的基本事实，组织架构、人员构成、团队理念等。</p><p>此外，模型训练天然不方便，不考虑成本，单单考虑迭代，回滚等高频操作，成本就无法忽视，如果是那种高频变动的数据，或者不保守地说，绝大多数数据，都不如用外部数据源存储。</p><p>但是将微调与 RAG 配合起来就不赖了，微调负责教会模型规范，RAG 负责给模型提供具体知识。</p><h3 id="为什么上下文再长，也需要外部存储？"><a href="#为什么上下文再长，也需要外部存储？" class="headerlink" title="为什么上下文再长，也需要外部存储？"></a>为什么上下文再长，也需要外部存储？</h3><p>把 RAG 换成“外部存储”也是同一个道理，</p><p>最大的原因是上下文长度有限：如果说上下文是内存、甚至说缓存，外部存储就是硬盘。上下文的容积，和内存、缓存一样至少短期来看很难做大，对于业务中频繁出现的长内容完全没有抵抗之力。更不要说，Transformer 还有<strong>中部迷失</strong>的缺陷，上下文再长，也不能像内存那样保证所有内容都能召回。</p><p>另一个问题就是敏感数据的权限问题。上下文内容是完全交给 LLM，你能够保证里面的内容不泄露吗？虽然这个问题是无法解决的，但是只给一点敏感数据和全部给敏感数据，风险是两个级别。</p><p>外部存储最后一个好处是，引用的信源可查证审查。</p><h3 id="RAG-优势-缺陷"><a href="#RAG-优势-缺陷" class="headerlink" title="RAG 优势 &amp; 缺陷"></a>RAG 优势 &amp; 缺陷</h3><p><strong>优势（基本上全部来自于外部存储）</strong></p><ol><li><p>低成本更新知识，便于维护。</p></li><li><p>由于有信源可查证，模型更倾向于从信源中查找而非自行编造，可以缓解幻觉问题。</p></li><li><p>数据好做隔离和权限门。</p></li><li><p>不要求配备专用业务模型，采用各种通用大模型，外部存储就可以提供知识。</p></li></ol><p><strong>缺陷（基本上全部来自于向量数据库）</strong></p><ol><li><p>检索质量影响最终效果。1.语义联系相似度计算得到的 top-k 是不是我们想要的结果？如何保证去除无关内容、保留相关内容？2.使用不同的 Embedding 模型，向量数据库还是否可用？3.另外也有可能出现类似于哈希冲突一样的问题，即不同语义的向量之间余弦距离很近时怎么办？。</p></li><li><p>工程问题。检索这种大工程，在工程上的可实现性如何？实现后能不能达到可用标准？</p></li><li><p>塞入信息到上下文，带来更多 token 成本。</p></li></ol><h2 id="向量索引算法和向量数据库"><a href="#向量索引算法和向量数据库" class="headerlink" title="向量索引算法和向量数据库"></a>向量索引算法和向量数据库</h2><p><a href="https://javaguide.cn/ai/rag/rag-vector-store.html">RAG 向量索引算法和向量数据库</a></p><h3 id="向量数据库在寻找语义-top-k-上的优势"><a href="#向量数据库在寻找语义-top-k-上的优势" class="headerlink" title="向量数据库在寻找语义 top-k 上的优势"></a>向量数据库在寻找语义 top-k 上的优势</h3><p>在向量数据库之前，关系型数据库也可以存向量，同时也可以通过编写 SQL 指令计算余弦距离来判断语义相似度，然后来进行检索。但是，在面对大量数据时，关系型数据库只能全表依次查询，虽然全盘扫描的好处是能够从全部数据中准确地提取有关 top-k，但是其效率非常低下，延迟往往以秒计算，无法接受。</p><p>而向量数据库，由于搭载了专门的向量索引算法，能够很快地找出语义近似的 top-k，完美满足业务要求。</p><p>ANN (Approximate Nearest Neighbor，近似最近邻) 算法，就是为了解决这个问题的。其核心思想是尽量削减已知无意义的检索次数，只在剩余检索次数中检索</p><h2 id="RAG-文档切片策略"><a href="#RAG-文档切片策略" class="headerlink" title="RAG 文档切片策略"></a>RAG 文档切片策略</h2><p><a href="https://javaguide.cn/ai/rag/rag-document-processing.html">RAG 文档处理与切分策略：从解析、清洗、Chunking 到多模态内容处理</a></p><h3 id="文档从入库到切片"><a href="#文档从入库到切片" class="headerlink" title="文档从入库到切片"></a>文档从入库到切片</h3><p>在上文中，文档切片前经过了一次清洗，其实远没有一句清洗那么简单，而是一步步做质量校验，这是一整个流程：</p><ol><li><p>检查文档合法性，例如拓展名、大小、编码等，一旦有任何错误就不予通行，直接报错。</p></li><li><p>Layout 解析文档。pdf 就用 pdf 解析器、json 就用 json 解析器，就是从文件中提取出文字。解析器会尽可能地识别出整个文档结构的内容，就比如 pdf 可能会有标题、引言、每个段落、代码块、图片等信息。</p></li><li></li></ol><h3 id="文档切片策略"><a href="#文档切片策略" class="headerlink" title="文档切片策略"></a>文档切片策略</h3><h3 id="文档从切片到入库"><a href="#文档从切片到入库" class="headerlink" title="文档从切片到入库"></a>文档从切片到入库</h3>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;RAG&quot;&gt;&lt;a href=&quot;#RAG&quot; class=&quot;headerlink&quot; title=&quot;RAG&quot;&gt;&lt;/a&gt;RAG&lt;/h1&gt;&lt;h2 id=&quot;RAG-基础概念&quot;&gt;&lt;a href=&quot;#RAG-基础概念&quot; class=&quot;headerlink&quot; title=&quot;RAG 基</summary>
+      
+    
+    
+    
+    
+    <category term="LLM" scheme="https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/LLM/"/>
+    
+    <category term="JavaGuide" scheme="https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/JavaGuide/"/>
+    
+    <category term="Agent" scheme="https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/Agent/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaGuide - Harness Engineering</title>
@@ -496,26 +522,6 @@
     
     
     <category term="中间件" scheme="https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2023/10/24/101439/"/>
-    <id>https://github.com/KatzenyaSax/KatzenyaSax.github.io/2023/10/24/101439/</id>
-    <published>2023-10-24T02:14:26.000Z</published>
-    <updated>2023-10-24T09:15:10.321Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
-    
     
   </entry>
   
