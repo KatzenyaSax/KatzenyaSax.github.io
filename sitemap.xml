@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/10/14/cmv7u2xy40000ucyq4mht8eyo/</loc>
+    
+    <lastmod>2026-10-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/09/10/cmu0xki080000wwyq4t401bft/</loc>
     
     <lastmod>2026-10-14</lastmod>
@@ -252,6 +261,13 @@
   
   <url>
     <loc>https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/HelloAgent/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/KatzenyaSax/KatzenyaSax.github.io/tags/ki/</loc>
     <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
