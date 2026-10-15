@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg">
 <meta property="article:published_time" content="2026-08-11T06:41:22.000Z">
-<meta property="article:modified_time" content="2026-09-14T04:14:33.297Z">
+<meta property="article:modified_time" content="2026-10-15T06:47:38.041Z">
 <meta property="article:author" content="KatzenyaSax">
 <meta property="article:tag" content="LLM">
 <meta property="article:tag" content="JavaGuide">
@@ -58,7 +58,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2026-09-14 12:14:33'
+  postUpdate: '2026-10-15 14:47:38'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -156,7 +156,7 @@
       }
       detectApple()
     })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="KatzenyaSax: Hello!" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="KatzenyaSax: Hello!"><span class="site-name">KatzenyaSax: Hello!</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JavaGuide - Agent核心概念</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-08-11T06:41:22.000Z" title="发表于 2026-08-11 14:41:22">2026-08-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-09-14T04:14:33.297Z" title="更新于 2026-09-14 12:14:33">2026-09-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JavaGuide - Agent核心概念"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Agent-核心概念"><a href="#Agent-核心概念" class="headerlink" title="Agent 核心概念"></a>Agent 核心概念</h1><p><a target="_blank" rel="noopener" href="https://javaguide.cn/ai/agent/agent-basis.html">Agent 核心概念</a></p>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="KatzenyaSax: Hello!"><span class="site-name">KatzenyaSax: Hello!</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JavaGuide - Agent核心概念</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-08-11T06:41:22.000Z" title="发表于 2026-08-11 14:41:22">2026-08-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-10-15T06:47:38.041Z" title="更新于 2026-10-15 14:47:38">2026-10-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JavaGuide - Agent核心概念"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Agent-核心概念"><a href="#Agent-核心概念" class="headerlink" title="Agent 核心概念"></a>Agent 核心概念</h1><p><a target="_blank" rel="noopener" href="https://javaguide.cn/ai/agent/agent-basis.html">Agent 核心概念</a></p>
 <h2 id="Agent-一句话定义"><a href="#Agent-一句话定义" class="headerlink" title="Agent 一句话定义"></a>Agent 一句话定义</h2><p>AI Agent 是基于 LLM 的能力，能够感知环境、决策并执行动作的软件系统。</p>
 <h2 id="一个可用的-Agent-必须包含哪几个部分？"><a href="#一个可用的-Agent-必须包含哪几个部分？" class="headerlink" title="一个可用的 Agent 必须包含哪几个部分？"></a>一个可用的 Agent 必须包含哪几个部分？</h2><p>必须有以下三大部分： LLM、Tool、Context。</p>
 <p>其中，LLM 负责工作决策；Tool 由 LLM 决策调用，增强 LLM 功能；Context 构建 LLM 工作上下文。</p>
@@ -166,20 +166,17 @@
 <h4 id="为什么-Schema-都在使用-JSON？"><a href="#为什么-Schema-都在使用-JSON？" class="headerlink" title="为什么 Schema 都在使用 JSON？"></a>为什么 Schema 都在使用 JSON？</h4><p>前面提到，一个 Schema 应当定义一个工具，将其暴露到 LLM 后，LLM 唯一的执行该工具的方法就是依照这个 Schema 输出必要字段，也就是说，<strong>LLM 本身是不能知道这个工具底层是怎么调用的，它只知道需要提供哪些信息</strong>，将这些信息（必要字段）提交给服务器后，服务器就能<strong>自动翻译然后真正调用底层工具</strong>。</p>
 <p>没错，LLM 网关也需要承担翻译工具意图的事。</p>
 <p>然后是必要字段的事情，众所周知，目前最通用、最适合这种 k-v 格式的就是 JSON，所以大伙就都用 JSON 了。</p>
-<h3 id="Skill"><a href="#Skill" class="headerlink" title="Skill"></a>Skill</h3><p>Skill 我们都很熟悉，本质上是一段提示词，将需要的工作进行编排，能实现很多功能。</p>
-<p>不过， Skill 也可以应对这个问题：当一个任务需要调用多次工具，可能还伴随着复杂的工具时序编排，有可能 LLM 的智商跟不上，没法准确现场编排工具，那不就完犊子了。</p>
-<p>所以，如果在 Skill 中，将某个大的需求细细分解编排，再弱智的模型在开卷考试的情况下，基本上也能完整执行了。</p>
-<p>当前 Skill 有两种形态：1. ToolKit，被封装的提示词，LLM 无法直接看到内部细节，只能看到对外暴露的 Schema；2. Agent Skill，开放明文存储的提示词，LLM 可以完全看到内部的细节和编排。</p>
-<p>两种形态的基本需求都是，告诉 LLM 特定的工作流 Workflow。</p>
-<p>另外，Skill 是渐进式披露的，LLM 根据当前任务可自动匹配对应的 Skill；亦可手动调用。</p>
+<h3 id="Skill"><a href="#Skill" class="headerlink" title="Skill"></a>Skill</h3><p>Skill 本身不属于 Tool，但它的工作哲学和 Tool 有相似之理，且如今很多情况下 Skill 都依赖 Tool 系统展开。</p>
+<p>Skill 本质上是一段提示词，将需要的工作进行编排，能实现很多功能，特别是在各种工具层出不穷的当下，任务在很多时候都需要调用多次工具，还伴随着复杂的工具时序编排，如果 LLM 的智商跟不上，没法准确现场编排工具，那不就完犊子了。这种情况就是 Skill 的舒适区，将某个大的需求细细分解编排，再弱智的模型在开卷考试的情况下，基本上也能完整执行了。</p>
+<p>也就是说，Skill 的目的就是在模型不够强的情况下，用人类智慧去补足模型智慧。</p>
 <h3 id="MCP-协议"><a href="#MCP-协议" class="headerlink" title="MCP 协议"></a>MCP 协议</h3><p>在 MCP 之前，所有的工具都需要<strong>手动编写接口</strong>、<strong>手动实现</strong>，然后<strong>手动注册发现</strong>，工具系统和 Agent 系统高度耦合，既不好维护也不好拓展或复用。而在 MCP 之后，Agent 系统和工具系统实现了解耦，双方从此允许部署在不同的服务上，二者之间维护一套 MCP 中间层进行通信。</p>
 <p>市面上存在不少 MCP 服务器，你也可以自己创建专属的 MCP 服务器。基于 MCP 规范，MCP 服务器需要向 Agent 系统提供以下服务：</p>
 <ol>
-<li><p>工具的调用 Schema 或者其他接口，供 LLM 如 Function Calling 一般调用；</p>
+<li><p>工具的调用 Schema ，供 LLM 调用。</p>
 </li>
-<li><p>MCP 服务器的本地资源，图片、文档、数据等；</p>
+<li><p>MCP 服务器的本地资源，图片、文档、数据等。</p>
 </li>
-<li><p><strong>Prompt&#x2F;Skill</strong>。mcp服务器的工具是本地agent应用不知道的，在面对需要mcp服务器工具交叠使用的复杂场景时，本地的skill全体失效，所以需要构建一套专门用于编排mcp工具的skill，并且将其布置到mcp服务器，和工具一同发布，便于 Agent 或者用户调用。</p>
+<li><p><strong>Prompt&#x2F;Skill</strong>。MCP 服务器的工具是本地 Agent 应用不熟悉的，在面对需要 MCP 服务器工具交叠使用的复杂场景时，本地的 Skill 有可能全体失效，所以需要构建一套专门用于编排 MCP 工具的 Skill ，并且将其布置到 MCP 服务器，和工具一同发布，便于 Agent 或者用户调用。</p>
 </li>
 <li><p>工具注册&#x2F;发现服务，统一告诉 Agent 自己所拥有的工具；</p>
 </li>
