@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>AI Coding 实践 - 以写一个论坛项目入手 | KatzenyaSax: Hello!</title><meta name="author" content="KatzenyaSax"><meta name="copyright" content="KatzenyaSax"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="AI Coding 从 vibe coding 到 spec coding，再一步步发展到 Harness Engineering，已经有了众多实证，正确使用 AI 非但不会带来破坏，反而带来了增益，相信每一个使用过 AI 的开发者，都无法回到古法编程了，AI 的开发效率就是高于人类，人类没有必要否认，更没必要对抗，所以问题已经转变为：怎样使用 AI 写出我们想要的代码？每个开发者有自己的工作流，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI Coding 实践 - 以写一个论坛项目入手">
+<meta property="og:url" content="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/11/07/cmw6h2ogh00018iakc6ch0c05/index.html">
+<meta property="og:site_name" content="KatzenyaSax: Hello!">
+<meta property="og:description" content="AI Coding 从 vibe coding 到 spec coding，再一步步发展到 Harness Engineering，已经有了众多实证，正确使用 AI 非但不会带来破坏，反而带来了增益，相信每一个使用过 AI 的开发者，都无法回到古法编程了，AI 的开发效率就是高于人类，人类没有必要否认，更没必要对抗，所以问题已经转变为：怎样使用 AI 写出我们想要的代码？每个开发者有自己的工作流，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg">
+<meta property="article:published_time" content="2026-11-07T05:35:30.000Z">
+<meta property="article:modified_time" content="2026-11-07T14:00:41.221Z">
+<meta property="article:author" content="KatzenyaSax">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="后端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg"><link rel="shortcut icon" href="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/fiveDragonTale.png"><link rel="canonical" href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/11/07/cmw6h2ogh00018iakc6ch0c05/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'AI Coding 实践 - 以写一个论坛项目入手',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-11-07 22:00:41'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="KatzenyaSax: Hello!" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="KatzenyaSax: Hello!"><span class="site-name">KatzenyaSax: Hello!</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">AI Coding 实践 - 以写一个论坛项目入手</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-11-07T05:35:30.000Z" title="发表于 2026-11-07 13:35:30">2026-11-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-11-07T14:00:41.221Z" title="更新于 2026-11-07 22:00:41">2026-11-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="AI Coding 实践 - 以写一个论坛项目入手"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>AI Coding 从 vibe coding 到 spec coding，再一步步发展到 Harness Engineering，已经有了众多实证，正确使用 AI 非但不会带来破坏，反而带来了增益，相信每一个使用过 AI 的开发者，都无法回到古法编程了，AI 的开发效率就是高于人类，人类没有必要否认，更没必要对抗，所以问题已经转变为：怎样使用 AI 写出我们想要的代码？每个开发者有自己的工作流，也有自己的理解，不必分个高下，只要能实现需求交付那就是好的。</p>
+<p>我本人在26年3月接触过当时还是最佳实践的 superpowers + gstakc 构成规划、执行、验证的工作流，但是后来将精力投入到其他去了，后面出现的 trace、审计这些完全没有接触过了，所以对 AI Coding 实践算是重新开始学习，我的想法是使用 AI Coding 从立项到真实上线，完成一个类贴吧论坛项目，全程不自己写一行代码，找到适合自己的 AI Coding 实践方法。</p>
+<h1 id="项目之前"><a href="#项目之前" class="headerlink" title="项目之前"></a>项目之前</h1><p>在项目开始之前，我想尽可能地表达一下我目前对 AI Coding 如何写出可靠代码这个问题的理解。</p>
+<h2 id="打铁还需自身硬"><a href="#打铁还需自身硬" class="headerlink" title="打铁还需自身硬"></a>打铁还需自身硬</h2><p>使用 AI 写需求的前提是本人得懂需求，也看得懂代码，不要求看得懂每一行，最起码要看得懂 AI 代码在抽象层面是如何工作的，我在开发的时候也会尽量观察 AI 写完的代码，看看逻辑是不是通顺，是不是符合现有规范，也就是说 AI 的每一步要尽可能地在我的掌握之下，所以我会尽可能缩短 AI 单次编写的范围，防止变动范围太大我看不过来，也方便 git 回滚。</p>
+<h2 id="grill-with-docs"><a href="#grill-with-docs" class="headerlink" title="grill-with-docs"></a>grill-with-docs</h2><p>grill-with-docs 是我必用的一个 skill，它的作用相当于增强 AI 的思维链吧，有的 AI 不擅长将需求转化为技术方案，这个 skill 强制进行，而且考虑得很全面，虽然有时候给你列大几十个点很烦，但很多时候很好用。</p>
+<h2 id="文档维护"><a href="#文档维护" class="headerlink" title="文档维护"></a>文档维护</h2><p>md 文档可以做到很多事情，作为项目长期记忆可以固定很多事实，统一各种术语；作为计划书可以补充思维链和上下文，但是文档太多反而分散注意力，所以长期记忆只留一个；技术文档在实现之后要及时清理，可以删除，也可以移动到工作区外备份（通常没啥用），只要不让 LLM 看到就行。</p>
+<p>为什么技术文档要及时清理，这其实是我很早之前就发现的一个问题，一个大型项目是一个 session 完全无法承接的，不同的实现通常由不同 session 进行，而不同 session 拥有的上下文不一样，这就导致：不同 session 不管是上下文还是读写的文档，如果没有做版本控制，极大概率产生前后冲突，污染上下文；就算事实之间没有冲突，LLM 频繁地尝试读取这些文档，也会造成上下文占用、执行效率降低、分散注意力等问题。而有什么需要的，直接让 LLM 读代码就行了，很多人会维护很多这样那样的 spec，却忽略了代码本身就是</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>事实证明，AI 很喜欢各种 tdd 单元测试，实际上很没有用，我会在项目中明令禁止单元测试，而是使用 e2e。</p>
+<h2 id="审计"><a href="#审计" class="headerlink" title="审计"></a>审计</h2><p>这一块我自认为不擅长，我以前经常使用 &#x2F;review ，但是我后来发现效果并不是很好，。</p>
+<h2 id="pi"><a href="#pi" class="headerlink" title="pi"></a>pi</h2><p>为什么使用 pi？pi 是当前轻量化 Coding Agent 的巅峰，其设计哲学是尽可能减少 Harness，让 LLM 自由发挥，其内部只内置了 4 个基本工具，也不内置 skill，这样的好处是适配各种模型，坏处则是模型的能力被无限放大，很多时候任务效果好坏，由模型性能直接决定。</p>
+<p>而 cc、codex 这些产品走得是另一条路线，它们针对自家模型进行了优化，比如将工具 Schema 等喂给自家训练模型，这导致自家模型用起来就如鱼得水，其他家的模型没有经过专门训练过的话，用起来就很难受。国产的各家模型厂商也在不断迭代适配自家模型的 Agent 产品。</p>
+<p>不过值得单独提及的是 dsh，它以 ds 命名却完全不对 ds 做适配，技术路线反而比 pi 更激进。</p>
+<p>所以，我全程使用 pi + ds flash 1017 进行开发。</p>
+<h1 id="DAY-1"><a href="#DAY-1" class="headerlink" title="DAY 1"></a>DAY 1</h1><p>2026-11-7</p>
+<h2 id="决定架构"><a href="#决定架构" class="headerlink" title="决定架构"></a>决定架构</h2><p>贴吧我已经使用十多年了，很熟悉其中的主要业务，排除掉很多百度后来添加的无用业务，它的核心业务：进吧、进贴评论点赞收藏、排行榜、我的、接受通知，这几个是直接用户可感知的，用户直接感知不到的则还有用户认证、消息消费、审核等。</p>
+<p>所以我直接使用 grill-with-docs 与 pi 进行需求制定：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/skill:grill-with-docs 这是一个空项目，我目前正在准备基于springboot微服务后端、react+typescript前端，使用mysql、redis、nginx、rocketmq等主流技术栈，构建一个类贴吧的社群论坛，用户可以选择一个感兴趣的社群进入之后看帖子，并在帖子内评论、点赞、收藏等操作，并且可以接收来自别人的点赞、评论、@等消息。我打算将这个项目从零构建到真实上线，你帮我评估项目如何开展，考虑应该使用组建的适配版本、项目拆分为哪些微服务模块等技术问题。由于这是首次的架构评审阶段，你分析得越全面越好，不需要直接开始写代码</span><br></pre></td></tr></table></figure>
+
+<p>这里不给出具体问了哪些问题，主要讲讲我们达成的细节。</p>
+<p>首先是技术栈，后端就使用 spring cloud alibaba 那一套大厂主流技术栈。</p>
+<p>然后把整体架构拆分出了8个微服务：</p>
+<table>
+<thead>
+<tr>
+<th>进程</th>
+<th>拥有的写模型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>gateway</code></td>
+<td>路由、鉴权校验、限流</td>
+</tr>
+<tr>
+<td><code>user-service</code></td>
+<td>账号、凭证、用户资料、关注关系</td>
+</tr>
+<tr>
+<td><code>community-service</code></td>
+<td>社群本体、成员资格、吧主&#x2F;管理员角色</td>
+</tr>
+<tr>
+<td><code>content-service</code></td>
+<td>帖子、评论（树形）、帖子&#x2F;评论的计数快照</td>
+</tr>
+<tr>
+<td><code>interaction-service</code></td>
+<td>点赞、收藏（”谁对什么做了什么”的事实）</td>
+</tr>
+<tr>
+<td><code>notification-service</code></td>
+<td>消息聚合、投递、未读数</td>
+</tr>
+<tr>
+<td><code>search-service</code></td>
+<td>帖子&#x2F;社群全文检索索引</td>
+</tr>
+<tr>
+<td><code>rank-service</code></td>
+<td>热度排行投影（不拥有任何事实，见下）</td>
+</tr>
+</tbody></table>
+<p>同时确认了很多具体业务的逻辑，比如评论帖子和评论评论到底算不算同一种业务？排行榜做不做，怎么计算热度？还有其他细节，比如计算了一波部署硬性条件，部署在哪，开发过程等。</p>
+<p>关键点在于，这套方案对吗？我的做法是，让它自己对抗性审查一遍，看看哪些地方有冗余，哪些地方不够清晰，一般能够作出合理的调整。</p>
+<p>但是，我必须说的一点是，reflection 有反思滑坡的风险，很有可能反而把正确的方案改错；加上这种立项开始的技术评审本身就有很大的调整空间，不像项目已经进行中的物理限制大；再加上模型本身性能问题……那么答案只有一个了：自己过一遍方案。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io">KatzenyaSax</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/11/07/cmw6h2ogh00018iakc6ch0c05/">https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/11/07/cmw6h2ogh00018iakc6ch0c05/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io" target="_blank">KatzenyaSax: Hello!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Agent/">Agent</a><a class="post-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a></div><div class="post_share"><div class="social-share" data-image="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2026/11/05/cmw6h2oge00008iak5eeqcbaw/" title="JavaGuide - Agent安全"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaGuide - Agent安全</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2026/07/06/cmtxvjopx0000p2ake8fsc8wt/" title="HelloAgent - 构建你的 Agent 框架"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-06</div><div class="title">HelloAgent - 构建你的 Agent 框架</div></div></a></div><div><a href="/2026/08/05/cmtxvjopz0001p2ak08ff3sfo/" title="HelloAgent - 上下文工程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-05</div><div class="title">HelloAgent - 上下文工程</div></div></a></div><div><a href="/2026/08/11/cmtxvjoq00003p2ak56dbbfjq/" title="JavaGuide - Agent核心概念"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-11</div><div class="title">JavaGuide - Agent核心概念</div></div></a></div><div><a href="/2026/08/15/cmtxvjoq00005p2akbzfld1ao/" title="JavaGuide - Agent记忆系统"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-15</div><div class="title">JavaGuide - Agent记忆系统</div></div></a></div><div><a href="/2026/07/07/cmtxvjoq00007p2akehz20o24/" title="HelloAgent - 记忆与检索"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-07</div><div class="title">HelloAgent - 记忆与检索</div></div></a></div><div><a href="/2026/09/10/cmtxvjoq10009p2aka5um5i19/" title="JavaGuide - Harness Engineering"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-09-10</div><div class="title">JavaGuide - Harness Engineering</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">KatzenyaSax</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" href="https://github.com/KatzenyaSax"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Hello</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%B9%8B%E5%89%8D"><span class="toc-number">1.</span> <span class="toc-text">项目之前</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E9%93%81%E8%BF%98%E9%9C%80%E8%87%AA%E8%BA%AB%E7%A1%AC"><span class="toc-number">1.1.</span> <span class="toc-text">打铁还需自身硬</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grill-with-docs"><span class="toc-number">1.2.</span> <span class="toc-text">grill-with-docs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E7%BB%B4%E6%8A%A4"><span class="toc-number">1.3.</span> <span class="toc-text">文档维护</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">1.4.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A1%E8%AE%A1"><span class="toc-number">1.5.</span> <span class="toc-text">审计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pi"><span class="toc-number">1.6.</span> <span class="toc-text">pi</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DAY-1"><span class="toc-number">2.</span> <span class="toc-text">DAY 1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B3%E5%AE%9A%E6%9E%B6%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">决定架构</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/07/cmw6h2ogh00018iakc6ch0c05/" title="AI Coding 实践 - 以写一个论坛项目入手">AI Coding 实践 - 以写一个论坛项目入手</a><time datetime="2026-11-07T05:35:30.000Z" title="发表于 2026-11-07 13:35:30">2026-11-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/05/cmw6h2oge00008iak5eeqcbaw/" title="JavaGuide - Agent安全">JavaGuide - Agent安全</a><time datetime="2026-11-05T09:28:17.000Z" title="发表于 2026-11-05 17:28:17">2026-11-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/10/14/cmw6h2ogn00098iak6waadnrq/" title="ki - 核心设计">ki - 核心设计</a><time datetime="2026-10-14T07:40:40.000Z" title="发表于 2026-10-14 15:40:40">2026-10-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/10/12/cmw6h2ogk00058iak7gvc5kac/" title="Ki - 工具结果留痕机制开发 - 记一次失败的开发">Ki - 工具结果留痕机制开发 - 记一次失败的开发</a><time datetime="2026-10-12T08:56:44.000Z" title="发表于 2026-10-12 16:56:44">2026-10-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/17/cmw6h2ogo000b8iak7n7l9ter/" title="JavaGuide-RAG">JavaGuide-RAG</a><time datetime="2026-09-17T01:15:22.000Z" title="发表于 2026-09-17 09:15:22">2026-09-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By KatzenyaSax</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
