@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg">
 <meta property="article:published_time" content="2026-11-07T05:35:30.000Z">
-<meta property="article:modified_time" content="2026-11-08T12:37:15.120Z">
+<meta property="article:modified_time" content="2026-11-10T13:00:46.088Z">
 <meta property="article:author" content="KatzenyaSax">
 <meta property="article:tag" content="Agent">
 <meta property="article:tag" content="后端">
@@ -57,7 +57,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2026-11-08 20:37:15'
+  postUpdate: '2026-11-10 21:00:46'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -155,15 +155,18 @@
       }
       detectApple()
     })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="KatzenyaSax: Hello!" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="KatzenyaSax: Hello!"><span class="site-name">KatzenyaSax: Hello!</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">AI Coding 实践 - 以写一个论坛项目入手</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-11-07T05:35:30.000Z" title="发表于 2026-11-07 13:35:30">2026-11-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-11-08T12:37:15.120Z" title="更新于 2026-11-08 20:37:15">2026-11-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="AI Coding 实践 - 以写一个论坛项目入手"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>AI Coding 从 vibe coding 到 spec coding，再一步步发展到 Harness Engineering，已经有了众多实证，正确使用 AI 非但不会带来破坏，反而带来了增益，相信每一个使用过 AI 的开发者，都无法回到古法编程了，AI 的开发效率就是高于人类，人类没有必要否认，更没必要对抗，所以问题已经转变为：怎样使用 AI 写出我们想要的代码？每个开发者有自己的工作流，也有自己的理解，不必分个高下，只要能实现需求交付那就是好的。</p>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="KatzenyaSax: Hello!"><span class="site-name">KatzenyaSax: Hello!</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">AI Coding 实践 - 以写一个论坛项目入手</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-11-07T05:35:30.000Z" title="发表于 2026-11-07 13:35:30">2026-11-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-11-10T13:00:46.088Z" title="更新于 2026-11-10 21:00:46">2026-11-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="AI Coding 实践 - 以写一个论坛项目入手"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>AI Coding 从 vibe coding 到 spec coding，再一步步发展到 Harness Engineering，已经有了众多实证，正确使用 AI 非但不会带来破坏，反而带来了增益，相信每一个使用过 AI 的开发者，都无法回到古法编程了，AI 的开发效率就是高于人类，人类没有必要否认，更没必要对抗，所以问题已经转变为：怎样使用 AI 写出我们想要的代码？每个开发者有自己的工作流，也有自己的理解，不必分个高下，只要能实现需求交付那就是好的。</p>
 <p>我本人在26年3月接触过当时还是最佳实践的 superpowers + gstakc 构成规划、执行、验证的工作流，但是后来将精力投入到其他去了，后面出现的 trace、审计这些完全没有接触过了，所以对 AI Coding 实践算是重新开始学习，我的想法是使用 AI Coding 从立项到真实上线，完成一个类贴吧论坛项目，全程不自己写一行代码，找到适合自己的 AI Coding 实践方法。</p>
 <h1 id="项目之前"><a href="#项目之前" class="headerlink" title="项目之前"></a>项目之前</h1><p>在项目开始之前，我想尽可能地表达一下我目前对 AI Coding 如何写出可靠代码这个问题的理解。</p>
 <h2 id="打铁还需自身硬"><a href="#打铁还需自身硬" class="headerlink" title="打铁还需自身硬"></a>打铁还需自身硬</h2><p>使用 AI 写需求的前提是本人得懂需求，也看得懂代码，不要求看得懂每一行，最起码要看得懂 AI 代码在抽象层面是如何工作的，我在开发的时候也会尽量观察 AI 写完的代码，看看逻辑是不是通顺，是不是符合现有规范，也就是说 AI 的每一步要尽可能地在我的掌握之下，所以我会尽可能缩短 AI 单次编写的范围，防止变动范围太大我看不过来，也方便 git 回滚。</p>
 <h2 id="grill-with-docs"><a href="#grill-with-docs" class="headerlink" title="grill-with-docs"></a>grill-with-docs</h2><p>grill-with-docs 是我必用的一个 skill，它的作用相当于增强 AI 的思维链吧，有的 AI 不擅长将需求转化为技术方案，这个 skill 强制进行，而且考虑得很全面，虽然有时候给你列大几十个点很烦，但很多时候很好用。</p>
+<p>而且，这个 skill 全程作用，在规划完成的执行、评审阶段，也能按照规范，同时主动发现问题、给出解决方案。</p>
 <h2 id="文档维护"><a href="#文档维护" class="headerlink" title="文档维护"></a>文档维护</h2><p>md 文档可以做到很多事情，作为项目长期记忆可以固定很多事实，统一各种术语；作为计划书可以补充思维链和上下文，但是文档太多反而分散注意力，所以长期记忆只留一个；技术文档在实现之后要及时清理，可以删除，也可以移动到工作区外备份（通常没啥用），只要不让 LLM 看到就行。</p>
 <p>为什么技术文档要及时清理，这其实是我很早之前就发现的一个问题，一个大型项目是一个 session 完全无法承接的，不同的实现通常由不同 session 进行，而不同 session 拥有的上下文不一样，这就导致：不同 session 不管是上下文还是读写的文档，如果没有做版本控制，极大概率产生前后冲突，污染上下文；就算事实之间没有冲突，LLM 频繁地尝试读取这些文档，也会造成上下文占用、执行效率降低、分散注意力等问题。而有什么需要的，直接让 LLM 读代码就行了，很多人会维护很多这样那样的 spec，却忽略了<strong>代码本身就是最权威的 spec</strong>。</p>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>事实证明，AI 很喜欢各种 tdd 单元测试，实际上很没有用，我会在项目中明令禁止单元测试，而是使用 e2e。</p>
-<h2 id="审计"><a href="#审计" class="headerlink" title="审计"></a>审计</h2><p>这一块我自认为不擅长，我以前经常使用 &#x2F;review ，但是我后来发现效果并不是很好，。</p>
+<h2 id="审计"><a href="#审计" class="headerlink" title="审计"></a>审计</h2><p>这一块我自认为不擅长，我以前经常使用 &#x2F;review ，但是我后来发现效果并不是很好，很多时候只是简单地看看代码就完了，不做更深的测评。</p>
+<p>后来我完全摒弃了大部分 skill，重要的地方回归人工，当然，AI 先跑一下 e2e 测试，先最低成本地发现一下问题，一直到 AI 声称完全跑通的时候，我再上场作为一个用户测试。</p>
+<p>当然，我这个最后一环测试的深度肯定没有 AI 那么严密，只能找找明显的错误，更深层次的错误只能依靠最后全链路测试。</p>
 <h2 id="pi"><a href="#pi" class="headerlink" title="pi"></a>pi</h2><p>为什么使用 pi？pi 是当前轻量化 Coding Agent 的巅峰，其设计哲学是尽可能减少 Harness，让 LLM 自由发挥，其内部只内置了 4 个基本工具，也不内置 skill，这样的好处是适配各种模型，坏处则是模型的能力被无限放大，很多时候任务效果好坏，由模型性能直接决定。</p>
 <p>而 cc、codex 这些产品走得是另一条路线，它们针对自家模型进行了优化，比如将工具 Schema 等喂给自家训练模型，这导致自家模型用起来就如鱼得水，其他家的模型没有经过专门训练过的话，用起来就很难受。国产的各家模型厂商也在不断迭代适配自家模型的 Agent 产品。</p>
 <p>不过值得单独提及的是 dsh，它以 ds 命名却完全不对 ds 做适配，技术路线反而比 pi 更激进。</p>
@@ -558,5 +561,252 @@
 <h3 id="步骤5"><a href="#步骤5" class="headerlink" title="步骤5"></a>步骤5</h3><p>最后一步完成收尾工作，然后是 e2e 阶段，pi 根据 12 个项目挨个测试。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">P0 交付物清单</span><br><span class="line"></span><br><span class="line">  deploy/</span><br><span class="line">  ├── docker/Dockerfile.service      8 服务共用的多阶段构建</span><br><span class="line">  ├── compose/compose.yml            单文件 + core/app profile，13 个服务</span><br><span class="line">  │   ├── mysql/init/01-schemas.sh   5 个 schema + 5 个受限账号</span><br><span class="line">  │   ├── redis/redis.conf           AOF + noeviction</span><br><span class="line">  │   └── rocketmq/broker.conf       单 Master + IP 钉死 + commitlog 128MB</span><br><span class="line">  ├── nginx/kuaikan.conf             边缘代理（+ /test 路由）</span><br><span class="line">  ├── status/&#123;root,test&#125;/index.html  占位页 + 冒烟控制台</span><br><span class="line">  └── bin/</span><br><span class="line">      ├── check.sh       只编译不建镜像（15~30s，本地无编译器的补偿）</span><br><span class="line">      ├── up.sh          pull → build → up → 轮询 healthcheck（状态全程可见）</span><br><span class="line">      ├── verify.sh      P0 验收，16 条断言</span><br><span class="line">      ├── versions.sh    实测版本采集</span><br><span class="line">      ├── gen-env.sh     幂等生成/补全环境变量</span><br><span class="line">      └── install-status.sh  发布静态页</span><br><span class="line"></span><br><span class="line">  services/            9 个 Maven 模块（common + gateway + 7 服务）</span><br><span class="line">  docs/                12 份文档，其中 architecture §12 记了 8 条踩坑</span><br></pre></td></tr></table></figure>
 
-<p>没啥疑问，一步步都是我拍板过的。</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io">KatzenyaSax</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/11/07/cmw6h2ogh00018iakc6ch0c05/">https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/11/07/cmw6h2ogh00018iakc6ch0c05/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io" target="_blank">KatzenyaSax: Hello!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Agent/">Agent</a><a class="post-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a></div><div class="post_share"><div class="social-share" data-image="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2026/11/05/cmw7ridjs0000rlakdblzgcqm/" title="JavaGuide - Agent安全"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaGuide - Agent安全</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2026/07/06/cmtxvjopx0000p2ake8fsc8wt/" title="HelloAgent - 构建你的 Agent 框架"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-06</div><div class="title">HelloAgent - 构建你的 Agent 框架</div></div></a></div><div><a href="/2026/08/05/cmtxvjopz0001p2ak08ff3sfo/" title="HelloAgent - 上下文工程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-05</div><div class="title">HelloAgent - 上下文工程</div></div></a></div><div><a href="/2026/08/11/cmtxvjoq00003p2ak56dbbfjq/" title="JavaGuide - Agent核心概念"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-11</div><div class="title">JavaGuide - Agent核心概念</div></div></a></div><div><a href="/2026/08/15/cmtxvjoq00005p2akbzfld1ao/" title="JavaGuide - Agent记忆系统"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-15</div><div class="title">JavaGuide - Agent记忆系统</div></div></a></div><div><a href="/2026/07/07/cmtxvjoq00007p2akehz20o24/" title="HelloAgent - 记忆与检索"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-07</div><div class="title">HelloAgent - 记忆与检索</div></div></a></div><div><a href="/2026/09/10/cmtxvjoq10009p2aka5um5i19/" title="JavaGuide - Harness Engineering"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-09-10</div><div class="title">JavaGuide - Harness Engineering</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">KatzenyaSax</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" href="https://github.com/KatzenyaSax"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Hello</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%B9%8B%E5%89%8D"><span class="toc-number">1.</span> <span class="toc-text">项目之前</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E9%93%81%E8%BF%98%E9%9C%80%E8%87%AA%E8%BA%AB%E7%A1%AC"><span class="toc-number">1.1.</span> <span class="toc-text">打铁还需自身硬</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grill-with-docs"><span class="toc-number">1.2.</span> <span class="toc-text">grill-with-docs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E7%BB%B4%E6%8A%A4"><span class="toc-number">1.3.</span> <span class="toc-text">文档维护</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">1.4.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A1%E8%AE%A1"><span class="toc-number">1.5.</span> <span class="toc-text">审计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pi"><span class="toc-number">1.6.</span> <span class="toc-text">pi</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DAY-1"><span class="toc-number">2.</span> <span class="toc-text">DAY 1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B3%E5%AE%9A%E6%9E%B6%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">决定架构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DAY-2"><span class="toc-number">3.</span> <span class="toc-text">DAY 2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">3.1.</span> <span class="toc-text">配置服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P0-%E6%8E%A8%E8%BF%9B%E5%89%8D"><span class="toc-number">3.2.</span> <span class="toc-text">P0 推进前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P0-%E9%A6%96%E6%AC%A1%E6%8E%A8%E8%BF%9B"><span class="toc-number">3.3.</span> <span class="toc-text">P0 首次推进</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A41"><span class="toc-number">3.3.1.</span> <span class="toc-text">步骤1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A42"><span class="toc-number">3.3.2.</span> <span class="toc-text">步骤2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A43"><span class="toc-number">3.3.3.</span> <span class="toc-text">步骤3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A44"><span class="toc-number">3.3.4.</span> <span class="toc-text">步骤4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A45"><span class="toc-number">3.3.5.</span> <span class="toc-text">步骤5</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/07/cmw6h2ogh00018iakc6ch0c05/" title="AI Coding 实践 - 以写一个论坛项目入手">AI Coding 实践 - 以写一个论坛项目入手</a><time datetime="2026-11-07T05:35:30.000Z" title="发表于 2026-11-07 13:35:30">2026-11-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/05/cmw7ridjs0000rlakdblzgcqm/" title="JavaGuide - Agent安全">JavaGuide - Agent安全</a><time datetime="2026-11-05T09:28:17.000Z" title="发表于 2026-11-05 17:28:17">2026-11-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/10/14/cmw6h2ogn00098iak6waadnrq/" title="ki - 核心设计">ki - 核心设计</a><time datetime="2026-10-14T07:40:40.000Z" title="发表于 2026-10-14 15:40:40">2026-10-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/10/12/cmw6h2ogk00058iak7gvc5kac/" title="Ki - 工具结果留痕机制开发 - 记一次失败的开发">Ki - 工具结果留痕机制开发 - 记一次失败的开发</a><time datetime="2026-10-12T08:56:44.000Z" title="发表于 2026-10-12 16:56:44">2026-10-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/17/cmw6h2ogo000b8iak7n7l9ter/" title="JavaGuide-RAG">JavaGuide-RAG</a><time datetime="2026-09-17T01:15:22.000Z" title="发表于 2026-09-17 09:15:22">2026-09-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By KatzenyaSax</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+<p>没啥疑问，一步步都是我拍板过的，而且 P0 的任务简单，基本上不需要花太大力气。</p>
+<h1 id="DAY-3"><a href="#DAY-3" class="headerlink" title="DAY 3"></a>DAY 3</h1><p>26&#x2F;11&#x2F;10</p>
+<h2 id="P1-推进前：调整开放顺序"><a href="#P1-推进前：调整开放顺序" class="headerlink" title="P1 推进前：调整开放顺序"></a>P1 推进前：调整开放顺序</h2><p>P1 以用户任务为主，主要完成注册、登录、邮箱验证等任务。老规矩，先让 pi 分析需求：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">先不开始推进 P1，我想先看看你对 P1 的理解，主要任务可以分为哪些？推进顺序是什么？怎样才算任务全线完成？以及有哪些任务是需要我去做的（比如邮箱验证服务）？</span><br></pre></td></tr></table></figure>
+
+<p>它给出了执行顺序，这不是重点，重点看它列出的一些还没决定好的东西：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 邮件方案：MailHog 先行（推荐）／现在就接真实服务商（请给出是哪家）</span><br><span class="line">2. 前端是否纳入 P1：只做后端（推荐）／P1 一并初始化 React 工程</span><br><span class="line">3. 注册是否对公网开放：现在 /test 和所有接口都是公开的，注册接口一旦开放会被脚本刷。</span><br><span class="line">   建议：加一个配置开关 + 邀请码（默认关闭公开注册），或者按 IP 限流。你倾向哪种？</span><br><span class="line">4. 封禁/踢下线的操作入口：P1 还没有权限体系，我倾向在 user-service 提供 /internal/admin/** 端点（网关不路由它，只能从服务器上 curl 调用）。</span><br><span class="line">   你接受吗？</span><br></pre></td></tr></table></figure>
+
+<p>其中最重要的一点，<strong>我们好像忘了前端</strong>？P0 阶段只做了后端服务组件部署和验证，并没有做前端。所以我决定暂时停止推进 P1，先把前端基础设施搞定，我的回复是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.接受你的推荐，先做假验证打通全链路；2.我希望前端和后端同时进行，所以我在思考要不要在P1后端推进前，单独列出一个 P0.5 把前端基础设施搞定？3.使用配置开关，现在先不开放；4.可以，后面再做。</span><br></pre></td></tr></table></figure>
+
+<p>ds 在经过一系列思考后，依旧得出了 P0.5 应该做的结论，好吧其实你说啥 AI 都觉得要做，这就很考验人的决断了，总之后续功能的前后端都要同步开放，所以 P0.5 做好前端基础设施是一个合理的决定。</p>
+<p>当然，前端我是个菜鸟，pi 给出了很多要我拍板决定的问题，我直接让它通过，grill-with-docs 强制它为每个问题给多种解决方案，特别友好。</p>
+<h2 id="P0-5"><a href="#P0-5" class="headerlink" title="P0.5"></a>P0.5</h2><p>P0.5 对需求环节，依旧让它回答三个问题：要完成哪些任务？怎么推进？怎么验收？</p>
+<p>pi 的回复：</p>
+<ol>
+<li><p>搭建 ts 前端骨架。</p>
+</li>
+<li><p>支持 404 页面、layout 渲染等。</p>
+</li>
+<li><p>定好与后端的契约，比如我们就确认了一项，返回码一律只含传输层意义，例如：业务成功和业务失败，都返回200，因为 200 代表消息传输成功，而失败&#x2F;成功则采用额外字段响应。</p>
+<p> 更多的契约：</p>
+<table>
+<thead>
+<tr>
+<th>情况</th>
+<th>判定</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>成功</td>
+<td>HTTP 2xx 且 <code>body.code === 0</code></td>
+<td>返回 <code>body.data</code></td>
+</tr>
+<tr>
+<td>业务错误</td>
+<td>HTTP 2xx 且 <code>body.code !== 0</code></td>
+<td>抛 <code>ApiError(code, message)</code></td>
+</tr>
+<tr>
+<td>未登录</td>
+<td>HTTP 401</td>
+<td>走 <code>onUnauthorized</code> 钩子（P0.5 里是空实现），再抛 <code>ApiError</code></td>
+</tr>
+<tr>
+<td>限流</td>
+<td>HTTP 429</td>
+<td>抛 <code>ApiError</code>，不自动重试</td>
+</tr>
+<tr>
+<td>网络&#x2F;超时</td>
+<td>—</td>
+<td>抛 <code>ApiError(&#39;NETWORK&#39;)</code></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>确认前端可以收到后端 Result 结果。</p>
+</li>
+<li><p>编写首页，能够使用 react 组件显示服务状态。</p>
+</li>
+<li><p>部署上线</p>
+</li>
+</ol>
+<p>第三点</p>
+<p>e2e 测试标准：</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>断言</th>
+<th>命令要点</th>
+<th>证明什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>L1 静态质量</td>
+<td>typecheck 0 error；build 成功</td>
+<td><code>npm run typecheck &amp;&amp; npm run build</code></td>
+<td>类型与构建没坏</td>
+</tr>
+<tr>
+<td>L2 契约一致性</td>
+<td>重新生成后 <code>git diff --exit-code</code> 为空</td>
+<td><code>npm run gen:types &amp;&amp; git diff --exit-code</code></td>
+<td>后端 spec 与已提交类型同步；不同步说明改了接口没重新生成</td>
+</tr>
+<tr>
+<td>L3 API 冒烟</td>
+<td>7 个服务 <code>code=0</code> 且 <code>data.host</code> 非空；<code>/api/nope/ping</code> → 404</td>
+<td><code>npm run smoke:api</code></td>
+<td>前端 HTTP 层能正确解包真实后端响应</td>
+</tr>
+<tr>
+<td>L4 部署产物正确</td>
+<td><code>/</code> 返回的 HTML 含 <code>&lt;script type=&quot;module&quot;</code>，且不含”前端尚未构建”</td>
+<td><code>curl -s https://www.katzenyasax.top/ | grep</code></td>
+<td>线上是 Vite 产物而非占位页</td>
+</tr>
+<tr>
+<td>L5 静态资源可达</td>
+<td>从 L4 的 HTML 里抽出 <code>/assets/*.js</code>，请求返回 200 且 <code>content-type</code> 含 javascript</td>
+<td><code>curl -o /dev/null -w &#39;%&#123;http_code&#125; %&#123;content_type&#125;&#39;</code></td>
+<td>构建产物完整，不是半截发布</td>
+</tr>
+<tr>
+<td>L6a SPA 回退</td>
+<td><code>/whatever</code> HTTP 200 且返回 <code>index.html</code>（含 <code>&lt;div id=&quot;root&quot;&gt;</code>）</td>
+<td><code>curl</code></td>
+<td>nginx 回退正确（HTTP 层无法区分，所以断言 200 + index.html）</td>
+</tr>
+<tr>
+<td>L6b（人工）</td>
+<td>浏览器打开 <code>/whatever</code> 看到 404 UI</td>
+<td>人工</td>
+<td>前端路由真的兜住了</td>
+</tr>
+<tr>
+<td>L7 内部接口不泄漏</td>
+<td><code>/api/user/internal/api-docs</code> → 404</td>
+<td><code>curl</code></td>
+<td>契约端点没被网关转发出去</td>
+</tr>
+<tr>
+<td>L8 回归</td>
+<td><code>deploy/bin/verify.sh --no-restart</code> 16 条全绿；<code>/test/</code> → 200</td>
+<td>复用现有脚本</td>
+<td>P0 没被破坏</td>
+</tr>
+<tr>
+<td>L9 工作区干净</td>
+<td><code>git status --porcelain</code> 为空</td>
+<td><code>git status</code></td>
+<td>没有生成物没提交、没有临时文件残留</td>
+</tr>
+</tbody></table>
+<p>好吧直接过，中间干了啥我也看不懂，直接看最后成品。</p>
+<p><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/AICoding%E5%AE%9E%E8%B7%B5-%E4%BB%A5%E5%86%99%E4%B8%80%E4%B8%AA%E8%AE%BA%E5%9D%9B%E9%A1%B9%E7%9B%AE%E5%85%A5%E6%89%8B-4.png"></p>
+<p>然后还有<a target="_blank" rel="noopener" href="https://www.katzenyasax.top/whatever">404页面</a>不放图了。</p>
+<p>过。</p>
+<h2 id="P1-推进前：重新对需求"><a href="#P1-推进前：重新对需求" class="headerlink" title="P1 推进前：重新对需求"></a>P1 推进前：重新对需求</h2><p>P0.5 完成了前端大框架，后续开发前端后端同步推进，我们需要重新让 pi 思考，P1 对用户服务该如何推进。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">现在 P0 和 P0.5 分别搭建好了后端和前端骨架，P1 阶段我们想要同步完成前后端开发，你觉得原先针对后端的开发阶段该如何调整？ </span><br></pre></td></tr></table></figure>
+
+<p>pi 给出了六步： </p>
+<ol start="0">
+<li><p>前后端响应码契约对齐，主要在前后端中写好对应的接口，还要支持 mock 测试。</p>
+</li>
+<li><p>后端接入mybatis-plus，mysql 内建库、表、字段，然后完成注册逻辑；</p>
+</li>
+<li><p>登录和会话维持；</p>
+</li>
+<li><p>所有服务，只相信从网关发来的用户识别信息；</p>
+</li>
+<li><p>用户下线的三种方式：自行注销、被踢下线、被封禁。</p>
+</li>
+<li><p>验收</p>
+</li>
+</ol>
+<p>讨论 e2e 测试环节，P1 业务可以直接面向真实用户，由于我们明令禁止了 tdd 单元测试，所以 pi 建议引入 playwrite 进行 web 测试，接受。</p>
+<h2 id="P1-推进"><a href="#P1-推进" class="headerlink" title="P1 推进"></a>P1 推进</h2><h3 id="p1-0"><a href="#p1-0" class="headerlink" title="p1.0"></a>p1.0</h3><p>这一步对齐契约，我主要看后端，common 的 AuthErrorCode：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CODE_INVALID(40201, &quot;验证码错误或已失效&quot;),</span><br><span class="line">CODE_TOO_FREQUENT(40202, &quot;验证码发送过于频繁，请稍后再试&quot;),</span><br><span class="line">REGISTER_DISABLED(40203, &quot;注册功能暂未开放&quot;),</span><br><span class="line">EMAIL_TAKEN(40204, &quot;该邮箱已被注册&quot;),</span><br><span class="line">ACCOUNT_BANNED(40205, &quot;账号已被封禁&quot;),</span><br><span class="line">CREDENTIALS_INVALID(40206, &quot;邮箱或密码错误&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>没问题，过。</p>
+<h3 id="p1-1-建表"><a href="#p1-1-建表" class="headerlink" title="p1.1 建表"></a>p1.1 建表</h3><p>这一步算是个小重点，pi 终于开始操作数据库了，这一步中就要完成用户信息的库表设计，我们先问问它准备怎么设计：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P1.1的mysql、redis库表字段设计，我想看看你是怎么设计的。</span><br></pre></td></tr></table></figure>
+
+<p>pi 的回复：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. schema 归属不变：所有表落在 kuaikan_user，由 u_user 账号操作（ADR 0006 已把权限配死，跨库访问实测被拒）</span><br><span class="line">2. 真相只有一个存储：能在 MySQL 存的就不放 Redis，避免双写。Redis 只承担每请求热路径（access 白名单）和短生命周期数据（验证码）</span><br><span class="line">3. 凭证只存不可逆或不可伪造的东西：密码存 BCrypt 哈希；refresh token 存 jti（知道 jti 也伪造不出签名覆盖的 token）</span><br></pre></td></tr></table></figure>
+
+<p>t_user 表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_user (</span><br><span class="line">  id            <span class="type">BIGINT</span>       <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;雪花 ID，见第五节&#x27;</span>,</span><br><span class="line">  email         <span class="type">VARCHAR</span>(<span class="number">254</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;入库前已小写化&#x27;</span>,</span><br><span class="line">  password_hash <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;BCrypt，形如 $2a$10$… 共 60 字符&#x27;</span>,</span><br><span class="line">  nickname      <span class="type">VARCHAR</span>(<span class="number">32</span>)  <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  avatar_url    <span class="type">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NULL</span>     COMMENT <span class="string">&#x27;P1 不接上传，先留空&#x27;</span>,</span><br><span class="line">  roles         <span class="type">VARCHAR</span>(<span class="number">64</span>)  <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;USER&#x27;</span> COMMENT <span class="string">&#x27;逗号分隔，透传到 token&#x27;</span>,</span><br><span class="line">  status        TINYINT      <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">1</span>      COMMENT <span class="string">&#x27;1=NORMAL 2=BANNED&#x27;</span>,</span><br><span class="line">  banned_reason <span class="type">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NULL</span>,</span><br><span class="line">  banned_at     DATETIME(<span class="number">3</span>)  <span class="keyword">NULL</span>,</span><br><span class="line">  last_login_at DATETIME(<span class="number">3</span>)  <span class="keyword">NULL</span>,</span><br><span class="line">  created_at    DATETIME(<span class="number">3</span>)  <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span>(<span class="number">3</span>),</span><br><span class="line">  updated_at    DATETIME(<span class="number">3</span>)  <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span>(<span class="number">3</span>) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span>(<span class="number">3</span>),</span><br><span class="line">  deleted_at    DATETIME(<span class="number">3</span>)  <span class="keyword">NULL</span>     COMMENT <span class="string">&#x27;逻辑删除，对应不变量 4&#x27;</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (id),</span><br><span class="line">  <span class="keyword">UNIQUE</span> KEY uk_user_email (email),</span><br><span class="line">  KEY idx_user_status_created (status, created_at)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 <span class="keyword">COLLATE</span><span class="operator">=</span>utf8mb4_0900_ai_ci;</span><br></pre></td></tr></table></figure>
+
+<p>user 表包含用户的全量信息，id、昵称、加密密码、头像等</p>
+<p>有一个没有解决的问题：email 是 unique 的，当用户被逻辑删除（deleted &#x3D; 1）后，email 会事实失效。</p>
+<p>t_refresh_token 表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t_refresh_token (</span><br><span class="line">  id              <span class="type">BIGINT</span>       <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  user_id         <span class="type">BIGINT</span>       <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  jti             <span class="type">CHAR</span>(<span class="number">36</span>)     <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;refresh token 的 jti（UUID）&#x27;</span>,</span><br><span class="line">  family_id       <span class="type">CHAR</span>(<span class="number">36</span>)     <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;一次登录 = 一个家族，重放时整族吊销&#x27;</span>,</span><br><span class="line">  issued_at       DATETIME(<span class="number">3</span>)  <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  expires_at      DATETIME(<span class="number">3</span>)  <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  consumed_at     DATETIME(<span class="number">3</span>)  <span class="keyword">NULL</span>     COMMENT <span class="string">&#x27;首次被用于轮换的时刻，宽限期从此刻起算&#x27;</span>,</span><br><span class="line">  revoked_at      DATETIME(<span class="number">3</span>)  <span class="keyword">NULL</span>,</span><br><span class="line">  replaced_by_jti <span class="type">CHAR</span>(<span class="number">36</span>)     <span class="keyword">NULL</span>     COMMENT <span class="string">&#x27;审计用，能在日志里串出轮换链&#x27;</span>,</span><br><span class="line">  last_used_at    DATETIME(<span class="number">3</span>)  <span class="keyword">NULL</span>,</span><br><span class="line">  user_agent      <span class="type">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NULL</span>     COMMENT <span class="string">&#x27;给 /sessions 设备列表用&#x27;</span>,</span><br><span class="line">  ip              <span class="type">VARCHAR</span>(<span class="number">45</span>)  <span class="keyword">NULL</span>     COMMENT <span class="string">&#x27;IPv6 最长 45&#x27;</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (id),</span><br><span class="line">  <span class="keyword">UNIQUE</span> KEY uk_rt_jti (jti),</span><br><span class="line">  KEY idx_rt_family (family_id),</span><br><span class="line">  KEY idx_rt_user (user_id, issued_at),</span><br><span class="line">  KEY idx_rt_expires (expires_at)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 <span class="keyword">COLLATE</span><span class="operator">=</span>utf8mb4_0900_ai_ci;</span><br></pre></td></tr></table></figure>
+
+<p>为什么 refresh token 不存 redis 而存 mysql？pi 认为有以下原因：1.避免双写不一致而刚需对账；2.用户通过session查看登录设备需要分页；3.吊销可审查；4.非热点需求，mysql 性能足够。</p>
+<p>redis 键：</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>类型</th>
+<th>TTL</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>auth:code:register:&#123;email&#125;</code></td>
+<td>String（6 位数字）</td>
+<td>600s</td>
+<td>验证码正文</td>
+</tr>
+<tr>
+<td><code>auth:code:try:register:&#123;email&#125;</code></td>
+<td>String（计数）</td>
+<td>600s</td>
+<td>错误次数，≥5 即作废</td>
+</tr>
+<tr>
+<td><code>auth:code:rate:email:&#123;email&#125;</code></td>
+<td>String（占位）</td>
+<td>60s</td>
+<td>同邮箱 60s 内只能发一次</td>
+</tr>
+<tr>
+<td><code>auth:code:rate:ip:&#123;ip&#125;</code></td>
+<td>String（计数）</td>
+<td>3600s</td>
+<td>同 IP 每小时上限（建议 10 次）</td>
+</tr>
+<tr>
+<td><code>auth:session:&#123;jti&#125;</code></td>
+<td>String（userId）</td>
+<td>access 剩余时间</td>
+<td>网关白名单（P1.3）</td>
+</tr>
+<tr>
+<td><code>auth:user:&#123;userId&#125;:jti</code></td>
+<td>Set</td>
+<td>30 天</td>
+<td>踢下线时批量删除（P1.4）</td>
+</tr>
+</tbody></table>
+<p>叽里呱啦说了一大堆，总之看上去挺合理，直接通过让它搞。</p>
+<h3 id="p1-1-前后端"><a href="#p1-1-前后端" class="headerlink" title="p1.1 前后端"></a>p1.1 前后端</h3><p>执行了很长时间，让我们看看效果。</p>
+<p><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/AICoding%E5%AE%9E%E8%B7%B5-%E4%BB%A5%E5%86%99%E4%B8%80%E4%B8%AA%E8%AE%BA%E5%9D%9B%E9%A1%B9%E7%9B%AE%E5%85%A5%E6%89%8B-5.png"></p>
+<p>前端注册页面写出来了，这不是重点，让我们看看后端，user-service。</p>
+<p>register 的逻辑就是，前端返回一个表单，在此之前用户已经触发一次 sendcode，后端接受这个表单，然后验证：1.验证码是不是对的、2.email 是不是占用了。如果都符合，则注册成功。</p>
+<p>验证码的生命流程的？验证码就是 6 位的随机数字，用户输入 email 并点击发送验证码后，后端服务先生成 6 位验证码，并将 <code>前缀+email &amp; 验证码</code> 以键值对形式存入 redis。当用户提交表单时，触发消费验证码，如果验证码无误，那么通过后端逻辑，redis 中也删除键值对。</p>
+<p>另外有几点：</p>
+<ol>
+<li><p>验证码发送后，在 redis 中根据 email 存一个键值对，存在 60 秒，用来判断是不是发送过于频繁；</p>
+</li>
+<li><p>相同 ip 地址的发送验证码请求，一小时内有限制，同样是通过在 redis 中存一个 ipKey 实现；</p>
+</li>
+<li><p>消费验证码时，如果验证码不对，会在 redis 中存储并累积 tryKey，超过一定数量时，该验证码就失效。</p>
+</li>
+</ol>
+<p>用户注册成功后，就可以顺理成章地在 mysql 内存一个对象。</p>
+<h3 id="p1-2"><a href="#p1-2" class="headerlink" title="p1.2"></a>p1.2</h3><p>p1.2 是整个 p1 的重点，涉及到用户登录状态和 session 的实现，正好，我们复习一下用户登录和分布式 session 的原理，真拿你没办法，坐好喽。</p>
+<p>我们都知道，对于用户而言，登录只需要账号和密码，后端验证好后就放行，但是后端怎么验证一个用户是否已经登录呢？简单，在一个地方保存一个东西例如 <code>usr_id_login = true</code>，表示用户已登录就行，这个就是最简单的 session。</p>
+<p>但问题是，这样一来后端只知道某个用户是否已经登录，无法知道，但用户在登录状态时，进行各种各样的操作，例如评论、购物等操作，后端不知道发送请求者的身份，怎么在后台操作？照理来说很简单啊，请求上加一个 userId 不就行了？这样确实后端知道了，但是这是一个很大的安全隐患，那我是不是只要知道其他用户的 userId 或者其他唯一信息，是不是就可以调接口随便操作别人的账户了？显然不能这么设计。</p>
+<p>所以我们引入 RS256，用户登录后，后端签发一对私钥密钥，后端保存私钥，公钥 access 交给各个服务，每次用户进行操作的时候，请求都带一个 access，只有和后端的密钥签发机构对上了，这次的操作才合法。</p>
+<p>不过，问题又来了：access 也有可能泄漏啊，一旦泄漏，只要在用户登录期间，攻击者可以随意操控账户。解决办法是：定时过期刷新。access 定时过期，后端重新签发一个 access 就行了。不过这种方式真的实现安全了吗？别忘了一切接口调用都要 access，包括续签 access！也就是说，攻击者拿旧的 access 就可以主动续签新的 access！也就是说理论上攻击者可以无限持续泄漏。</p>
+<p>所以，我们引入双 token：access token 和 refresh token：access 用来请求业务，存在时间短；refresh 代替上一种方法的续签，而且只能用于续签，存在时间长。</p>
+<p>核心的工作原理就是，access 失效时，后端验证 refresh 而非 access，如果对得上，就重新发布 access 和 refresh，也就是旧的 access、refresh 均失效。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io">KatzenyaSax</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/11/07/cmw6h2ogh00018iakc6ch0c05/">https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/11/07/cmw6h2ogh00018iakc6ch0c05/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io" target="_blank">KatzenyaSax: Hello!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Agent/">Agent</a><a class="post-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a></div><div class="post_share"><div class="social-share" data-image="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2026/11/05/cmw7ridjs0000rlakdblzgcqm/" title="JavaGuide - Agent安全"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaGuide - Agent安全</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2026/07/06/cmtxvjopx0000p2ake8fsc8wt/" title="HelloAgent - 构建你的 Agent 框架"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-06</div><div class="title">HelloAgent - 构建你的 Agent 框架</div></div></a></div><div><a href="/2026/08/05/cmtxvjopz0001p2ak08ff3sfo/" title="HelloAgent - 上下文工程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-05</div><div class="title">HelloAgent - 上下文工程</div></div></a></div><div><a href="/2026/08/11/cmtxvjoq00003p2ak56dbbfjq/" title="JavaGuide - Agent核心概念"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-11</div><div class="title">JavaGuide - Agent核心概念</div></div></a></div><div><a href="/2026/08/15/cmtxvjoq00005p2akbzfld1ao/" title="JavaGuide - Agent记忆系统"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-15</div><div class="title">JavaGuide - Agent记忆系统</div></div></a></div><div><a href="/2026/07/07/cmtxvjoq00007p2akehz20o24/" title="HelloAgent - 记忆与检索"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-07</div><div class="title">HelloAgent - 记忆与检索</div></div></a></div><div><a href="/2026/09/10/cmtxvjoq10009p2aka5um5i19/" title="JavaGuide - Harness Engineering"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-09-10</div><div class="title">JavaGuide - Harness Engineering</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">KatzenyaSax</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" href="https://github.com/KatzenyaSax"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Hello</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%B9%8B%E5%89%8D"><span class="toc-number">1.</span> <span class="toc-text">项目之前</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E9%93%81%E8%BF%98%E9%9C%80%E8%87%AA%E8%BA%AB%E7%A1%AC"><span class="toc-number">1.1.</span> <span class="toc-text">打铁还需自身硬</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grill-with-docs"><span class="toc-number">1.2.</span> <span class="toc-text">grill-with-docs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E7%BB%B4%E6%8A%A4"><span class="toc-number">1.3.</span> <span class="toc-text">文档维护</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">1.4.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A1%E8%AE%A1"><span class="toc-number">1.5.</span> <span class="toc-text">审计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pi"><span class="toc-number">1.6.</span> <span class="toc-text">pi</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DAY-1"><span class="toc-number">2.</span> <span class="toc-text">DAY 1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B3%E5%AE%9A%E6%9E%B6%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">决定架构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DAY-2"><span class="toc-number">3.</span> <span class="toc-text">DAY 2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">3.1.</span> <span class="toc-text">配置服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P0-%E6%8E%A8%E8%BF%9B%E5%89%8D"><span class="toc-number">3.2.</span> <span class="toc-text">P0 推进前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P0-%E9%A6%96%E6%AC%A1%E6%8E%A8%E8%BF%9B"><span class="toc-number">3.3.</span> <span class="toc-text">P0 首次推进</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A41"><span class="toc-number">3.3.1.</span> <span class="toc-text">步骤1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A42"><span class="toc-number">3.3.2.</span> <span class="toc-text">步骤2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A43"><span class="toc-number">3.3.3.</span> <span class="toc-text">步骤3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A44"><span class="toc-number">3.3.4.</span> <span class="toc-text">步骤4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A45"><span class="toc-number">3.3.5.</span> <span class="toc-text">步骤5</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DAY-3"><span class="toc-number">4.</span> <span class="toc-text">DAY 3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#P1-%E6%8E%A8%E8%BF%9B%E5%89%8D%EF%BC%9A%E8%B0%83%E6%95%B4%E5%BC%80%E6%94%BE%E9%A1%BA%E5%BA%8F"><span class="toc-number">4.1.</span> <span class="toc-text">P1 推进前：调整开放顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P0-5"><span class="toc-number">4.2.</span> <span class="toc-text">P0.5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P1-%E6%8E%A8%E8%BF%9B%E5%89%8D%EF%BC%9A%E9%87%8D%E6%96%B0%E5%AF%B9%E9%9C%80%E6%B1%82"><span class="toc-number">4.3.</span> <span class="toc-text">P1 推进前：重新对需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P1-%E6%8E%A8%E8%BF%9B"><span class="toc-number">4.4.</span> <span class="toc-text">P1 推进</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p1-0"><span class="toc-number">4.4.1.</span> <span class="toc-text">p1.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p1-1-%E5%BB%BA%E8%A1%A8"><span class="toc-number">4.4.2.</span> <span class="toc-text">p1.1 建表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p1-1-%E5%89%8D%E5%90%8E%E7%AB%AF"><span class="toc-number">4.4.3.</span> <span class="toc-text">p1.1 前后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p1-2"><span class="toc-number">4.4.4.</span> <span class="toc-text">p1.2</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/07/cmw6h2ogh00018iakc6ch0c05/" title="AI Coding 实践 - 以写一个论坛项目入手">AI Coding 实践 - 以写一个论坛项目入手</a><time datetime="2026-11-07T05:35:30.000Z" title="发表于 2026-11-07 13:35:30">2026-11-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/05/cmw7ridjs0000rlakdblzgcqm/" title="JavaGuide - Agent安全">JavaGuide - Agent安全</a><time datetime="2026-11-05T09:28:17.000Z" title="发表于 2026-11-05 17:28:17">2026-11-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/10/14/cmw6h2ogn00098iak6waadnrq/" title="ki - 核心设计">ki - 核心设计</a><time datetime="2026-10-14T07:40:40.000Z" title="发表于 2026-10-14 15:40:40">2026-10-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/10/12/cmw6h2ogk00058iak7gvc5kac/" title="Ki - 工具结果留痕机制开发 - 记一次失败的开发">Ki - 工具结果留痕机制开发 - 记一次失败的开发</a><time datetime="2026-10-12T08:56:44.000Z" title="发表于 2026-10-12 16:56:44">2026-10-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/17/cmw6h2ogo000b8iak7n7l9ter/" title="JavaGuide-RAG">JavaGuide-RAG</a><time datetime="2026-09-17T01:15:22.000Z" title="发表于 2026-09-17 09:15:22">2026-09-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By KatzenyaSax</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
