@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>redis-重点 | KatzenyaSax: Hello!</title><meta name="author" content="KatzenyaSax"><meta name="copyright" content="KatzenyaSax"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="五大基本类型、三种特殊类型Redis 共有 5 种基本数据类型：String（字符串）、List（列表）、Set（集合）、Hash（散列）、Zset（有序集合），可供用户定义和使用。 除了 5 种基本的数据类型之外，Redis 还支持 3 种特殊的数据类型：Bitmap、HyperLogLog、GEO。 String最简单的 k-v 形式，v 的字符串是 redis 自己实现的一种数据结构简单动态">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis-重点">
+<meta property="og:url" content="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/11/19/cmwq0f35t000073akhv2t69vc/index.html">
+<meta property="og:site_name" content="KatzenyaSax: Hello!">
+<meta property="og:description" content="五大基本类型、三种特殊类型Redis 共有 5 种基本数据类型：String（字符串）、List（列表）、Set（集合）、Hash（散列）、Zset（有序集合），可供用户定义和使用。 除了 5 种基本的数据类型之外，Redis 还支持 3 种特殊的数据类型：Bitmap、HyperLogLog、GEO。 String最简单的 k-v 形式，v 的字符串是 redis 自己实现的一种数据结构简单动态">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg">
+<meta property="article:published_time" content="2026-11-19T05:49:14.000Z">
+<meta property="article:modified_time" content="2026-11-21T06:11:01.637Z">
+<meta property="article:author" content="KatzenyaSax">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="八股">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg"><link rel="shortcut icon" href="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/fiveDragonTale.png"><link rel="canonical" href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/11/19/cmwq0f35t000073akhv2t69vc/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'redis-重点',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-11-21 14:11:01'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="KatzenyaSax: Hello!" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="KatzenyaSax: Hello!"><span class="site-name">KatzenyaSax: Hello!</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">redis-重点</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-11-19T05:49:14.000Z" title="发表于 2026-11-19 13:49:14">2026-11-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-11-21T06:11:01.637Z" title="更新于 2026-11-21 14:11:01">2026-11-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="redis-重点"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="五大基本类型、三种特殊类型"><a href="#五大基本类型、三种特殊类型" class="headerlink" title="五大基本类型、三种特殊类型"></a>五大基本类型、三种特殊类型</h1><p>Redis 共有 5 种基本数据类型：String（字符串）、List（列表）、Set（集合）、Hash（散列）、Zset（有序集合），可供用户定义和使用。</p>
+<p>除了 5 种基本的数据类型之外，Redis 还支持 3 种特殊的数据类型：Bitmap、HyperLogLog、GEO。</p>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>最简单的 k-v 形式，v 的字符串是 redis 自己实现的一种数据结构简单动态字符串 SDS，特点是除了可以保存文本数据，还可以保存二进制、整型数据。</p>
+<p>由于是最简单的 k-v 形式，用于存储“占位”信息很方便，比如 <strong>token、access</strong> 等。</p>
+<p>而 String 如果是整型的 value，还可以直接使用计算方法，因此需要<strong>计数</strong>时也很好用。</p>
+<p>除此之外，直接存序列化后的对象字符串也可以，比 Hash 省空间。</p>
+<p>其底层实现为：SDS。</p>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>Redis 中的 List，底层是链表的形式存的，Redis 自己实现了一个双向链表（<strong>虽然最终不直接使用双向linkedList</strong>）用来存 List。</p>
+<p>相比起 String 最简单的 k-v 一个对一个的形式，List 则是一个 k 对应多个 v，多个 v 就以双向链表的形式存在。如图：</p>
+<p><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/redis%E9%87%8D%E7%82%B9-list.png"></p>
+<p>自带的 LRANGE 很适合分页查询。</p>
+<p>但是注意，List 归根结底从来只有一个 k，所以<strong>对 List 设置的 ttl 会覆盖整个 v 双向链表</strong>。</p>
+<h3 id="底层实现：quickList"><a href="#底层实现：quickList" class="headerlink" title="底层实现：quickList"></a>底层实现：quickList</h3><p>双向 linkedList，每个节点都维护前驱、后继节点太浪费空间，而且缓存不友好。</p>
+<p>quickList 则不再使用一个节点单独维护，而是把一部分连续的元素聚合成列表，列表再独享一个，然后列表之间再组成链表</p>
+<p>比如这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    /===========================================================\</span><br><span class="line">quickListHair &lt;-&gt; quickNode &lt;-&gt; quickListNode &lt;-&gt; ...... &lt;-&gt; quickListNode</span><br><span class="line">                     |              |                              |</span><br><span class="line">                     |              |                             [1,23,6,...]</span><br><span class="line">                     |             [14,42,1,0,0,...]</span><br><span class="line">                     [9,0,1,35,...]</span><br></pre></td></tr></table></figure>
+
+<p>这样最大的好处，就是灵活：一个节点要插入、删除、修改，那么只操作其中一个 quickListNode 的 list 即可，其余节点则不需要再操作了。</p>
+<h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><p>Hash 不再是简单的一个 k，而是多个 String 的 k-v 对形式，如图：</p>
+<p><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/AICoding%E5%AE%9E%E8%B7%B5-%E4%BB%A5%E5%86%99%E4%B8%80%E4%B8%AA%E8%AE%BA%E5%9D%9B%E9%A1%B9%E7%9B%AE%E5%85%A5%E6%89%8B-9999.png"></p>
+<p>可以看到，一个 Hash 内不包含了若干 k-v 对，每个 k-v 对享受独立的 ttl，这是和 List 不同的。</p>
+<p>当然，Hash 更适合的是映射一个对象。</p>
+<h3 id="底层实现：ListPack-链表"><a href="#底层实现：ListPack-链表" class="headerlink" title="底层实现：ListPack+链表"></a>底层实现：ListPack+链表</h3><p>其实 Hash 就和 Java 的 HashMap 差不多，如今 redis 的 Hash 有两种底层实现，分别是 ListPack、HashTable。</p>
+<p>ListPack 最简单，它竟然直接把每一对 k-v 同时存到一个线性表里，即 <code>[k0, v0, k1, v1, ..., kn, vn]</code>，这种方式适合于少量的 k-v，节省时空消耗，但是不适合量大的情况。</p>
+<p>HashTable 和 Java 里的没区别，线性表+链表，先算哈希值存入 Dict，等发生哈希冲突了再转链表。</p>
+<p>两种方法会从 ListPakc 到 HashTable 单向切换，k-v 对数超过 512；或者某个 k、v 的字符数超过默认 <strong>64 字节</strong>时就会发生转变，且不会再降级为 ListPack。</p>
+<p><strong>为什么要设置 64 字节？</strong>因为 ZipList 本质上是连续分配的线性表，每个格子大小就是 64 字节，如果要存超过 64 字节的元素，要么截断，要么占用下一个格子两个格子一起存一个元素，但是那是不允许的，所以要转成链表，链表的节点大小可以动态分配，才能容纳超过 64 字节的元素。</p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>Set 也是一个 k-v 形式，但是类似于 List、区别于 Hash：Set 也是一个 k 对应多个 v 的形式，v 却是以集合方式存在，如图：</p>
+<p><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/redis%E9%87%8D%E7%82%B9-set.png"></p>
+<p>可以看到，相比起 List 每个 v 对应索引，Set 完全不含，因为 Set 不是有序的，而只是用于表达：一群不重复的元素，和所有语言中的 set 概念一样。</p>
+<p>Set 可以很轻松地处理需要求交集、并集的场景，比如<strong>朋友圈点赞、评论的用户</strong>，其他用户看到好友、非好友的时候，展示不同的昵称。</p>
+<p>和 List 一样，ttl 覆盖所有元素。</p>
+<h3 id="底层实现：Intset-HashTable"><a href="#底层实现：Intset-HashTable" class="headerlink" title="底层实现：Intset + HashTable"></a>底层实现：Intset + HashTable</h3><p>和 Hash 一样，数据量小（默认512）的时候，用有序的线性表直接存每个元素。数据量大了之后转 HashTable。</p>
+<p>Set 怎么实现去重？数据量小的时候，线性表直接二分查找看有没有一模一样的，这就是为什么要保持有序。</p>
+<p>而如果是 HashTable 就简单了，发生哈希冲突时，直接丢弃新来的。</p>
+<h2 id="ZSet"><a href="#ZSet" class="headerlink" title="ZSet"></a>ZSet</h2><p>ZSet 就是 Sorted Set，是有序的，如图所示：</p>
+<p><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/AICoding%E5%AE%9E%E8%B7%B5-%E4%BB%A5%E5%86%99%E4%B8%80%E4%B8%AA%E8%AE%BA%E5%9D%9B%E9%A1%B9%E7%9B%AE%E5%85%A5%E6%89%8B-9998.png"></p>
+<p>可以看到，比起 Set 的 v 只含元素，ZSet 的每个元素包含另一个因素：score，按照 score 排序。</p>
+<p>但是需要注意，元素不能相同，但 score 可以相同。</p>
+<p>应用场景：需要排行的场景。</p>
+<h3 id="todo：底层实现：ZipList-SkipList"><a href="#todo：底层实现：ZipList-SkipList" class="headerlink" title="todo：底层实现：ZipList + SkipList"></a>todo：底层实现：ZipList + SkipList</h3><p>和其他类型一样，数据量小和数据量大的时候分别用不同的结构，ZipList 和 SkipList。</p>
+<p>ZipList 本质上就是一个线性表，<strong>根据 score 有序地</strong>同时存元素和 score，比如 <code>[v1, 10, v2, 20, v3, 30, ......]</code>，当然，最大存储元素为 128，数据量超过时，或者有元素大于 64 个字节时，单向转为 SkipList。</p>
+<p>再来看 SkipList，我们直接手写一个跳表。假设有 8 个元素，已经根据 score 有序排列了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list:   A:1 -&gt; B:2 -&gt; C:3 -&gt; D:4 -&gt; E:5 -&gt; F:6 -&gt; G:7 -&gt; H:8 -&gt; null</span><br></pre></td></tr></table></figure>
+
+<p>二分地建立一节索引：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index1:         2      -&gt;     4     -&gt;      6      -&gt;     8</span><br><span class="line">                |             |             |             |</span><br><span class="line">list:   A:1 -&gt; B:2 -&gt; C:3 -&gt; D:4 -&gt; E:5 -&gt; F:6 -&gt; G:7 -&gt; H:8 -&gt; null</span><br></pre></td></tr></table></figure>
+
+<p>再对 index1 建立二级索引：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">index2:                       4            -&gt;             8</span><br><span class="line">                              |                           |</span><br><span class="line">index1:         2      -&gt;     4     -&gt;      6      -&gt;     8</span><br><span class="line">                |             |             |             |</span><br><span class="line">list:   A:1 -&gt; B:2 -&gt; C:3 -&gt; D:4 -&gt; E:5 -&gt; F:6 -&gt; G:7 -&gt; H:8 -&gt; null</span><br></pre></td></tr></table></figure>
+
+<h2 id="BitMap"><a href="#BitMap" class="headerlink" title="BitMap"></a>BitMap</h2><p>位图，用 1、0 表示某种状态，且直接用的二进制，很省空间。</p>
+<p>底层是 string 类型你敢信吗，基于 SDS 但是不读取为 string，只关注其中二进制。</p>
+<p>场景：例如统计活跃用户、标识用户点赞过等。</p>
+<h2 id="HyperLogLog"><a href="#HyperLogLog" class="headerlink" title="HyperLogLog"></a>HyperLogLog</h2><p>并非 redis 的显式类型，而是一种算法，redis 只是实现了部分功能。</p>
+<p>其形式也是多 k-v 形式的，k 可以视作某种标签，v 则是数量。</p>
+<p>HyperLogLog 的真正优势在于空间花销，<strong>只需要 12k 的空间就能存储接近2^64个不同元素</strong>，但是带来了错误率，有一定的计数误差。</p>
+<h1 id="Redis-性能"><a href="#Redis-性能" class="headerlink" title="Redis 性能"></a>Redis 性能</h1><h2 id="Redis-为什么快？"><a href="#Redis-为什么快？" class="headerlink" title="Redis 为什么快？"></a>Redis 为什么快？</h2><ol>
+<li><p>纯内存操作；</p>
+</li>
+<li><p><strong>单线程模型</strong>，虽然 redis 服务是单线程，但是实现了多路 I&#x2F;O 复用，所以既有性能又有安全；</p>
+</li>
+<li><p>数据类型的底层实现性能异常优秀；</p>
+</li>
+<li><p>Redis 自有的 RESP (REdis Serialization Protocol) 协议简单高效。</p>
+</li>
+</ol>
+<h2 id="底层"><a href="#底层" class="headerlink" title="底层"></a>底层</h2><p>Redis 底层的数据结构性能非常优秀，重点的有 Rehash、SkipList、QuickList 等。</p>
+<h3 id="SDS"><a href="#SDS" class="headerlink" title="SDS"></a>SDS</h3><p>SDS 本质上是一个包含字符数组的对象，它<strong>显式地记录了自己的长度</strong>（所以可以实现 O(1) 级别的长度获取）；并且<strong>遍历时严格按照 for(strlen)而非遇到 ‘\0’ 时结束</strong>（这使其二进制安全）。</p>
+<p>除此之外，它还在空间分配和释放时作出改进。分配空间时，会尝试分配更多空间，字符数组小于 1mb 时分配两倍空间、大于 1mb 时多分配 1mb，这使得<strong>空间不足的问题得到较好解决</strong>。而在释放上，SDS 遵循绝不减少空间、只增加空间的策略，除非把我杀掉。</p>
+<p>为什么不使用 C 语言写的 char* ？因为恰好不满足 SDS 的四个优点，甚至还有缺陷。比如需要遍历 O(n) 才能得到 strlen、遇到 ‘\0’ 才结束导致二进制不安全、频繁 malloc、容易空间不足导致出问题。</p>
+<h3 id="Dict-Rehash"><a href="#Dict-Rehash" class="headerlink" title="Dict &amp; Rehash"></a>Dict &amp; Rehash</h3><p>Dict 字典，可以用于维护一个哈希表；Rehash 则赋予哈希表重新分配长度的能力。Set、Hash、ZSet 都用到了 Dict 和 Rehash。</p>
+<p>Rehash 这种数据结构有一点有意思，其扩容是渐进式的。什么意思？一张 dict 的长度，如果我们知道它最终会成长为千亿级别，但是仅仅在现在，它的长度还用不到那么高，显然直接给这个 dict 分配千亿长度很蠢，它应该只满足现在的需求，然后慢慢成长。</p>
+<p>渐进式扩容，dict0 不够用了，就申请一个 dict0 两杯长度的 dict1，dict0 的元素重新计算哈希值加入 dict1，全部计算完后 dict0 释放，dict1 就是新的 dict0。</p>
+<h3 id="TODO"><a href="#TODO" class="headerlink" title="[TODO]"></a>[TODO]</h3><h2 id="单线程模型"><a href="#单线程模型" class="headerlink" title="单线程模型"></a>单线程模型</h2><h3 id="Redis-6-0-前"><a href="#Redis-6-0-前" class="headerlink" title="Redis 6.0 前"></a>Redis 6.0 前</h3><p>Redis 用 IO 多路复用监听 socket 处理客户端请求，由于全是内存操作，所以性能极为优异；而又因为 Redis 使用一个主要单线程处理所有<strong>就绪的 socket</strong>，因此甚至不需要担心并行下的锁问题，<strong>本质上是极快的串行</strong>。</p>
+<p>捋一下逻辑，我们假设一个 redis 服务连接了若干个客户端，客户端随时有可能找 redis 读写，但是 redis 主线程只管读写数据，不管连接、请求、收发，这些谁来管？其实是操作系统内核的活。</p>
+<p>客户端要和 Redis 建立长连接，向下请求 Linux 内核帮忙，内核查看 redis 连接没有问题，就维护一个Socket 文件描述符（fd），表示已经和 redis 连接好了，有什么事把消息发到 socket 缓冲区，内核通知 redis 就行。所以这个时候，redis 还没有真正开始干活。 </p>
+<p>当然，redis 知道有客户端和自己连接了也不是什么都不干，它会把这个 socket 加入到自己的<strong>文件事件处理器（file event handler）</strong>，其中不仅通过多路 IO 的方式监听了多个 socket，还能够将每个 socket 的请求精确分配到与之关联的不同处理器。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io">KatzenyaSax</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/11/19/cmwq0f35t000073akhv2t69vc/">https://github.com/KatzenyaSax/KatzenyaSax.github.io/2026/11/19/cmwq0f35t000073akhv2t69vc/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://github.com/KatzenyaSax/KatzenyaSax.github.io" target="_blank">KatzenyaSax: Hello!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a><a class="post-meta__tags" href="/tags/%E5%85%AB%E8%82%A1/">八股</a><a class="post-meta__tags" href="/tags/Redis/">Redis</a></div><div class="post_share"><div class="social-share" data-image="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2026/11/16/cmwj9g85m0000a3ak1jsichd4/" title="mysql - 重点"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">mysql - 重点</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2026/11/16/cmwj9g85m0000a3ak1jsichd4/" title="mysql - 重点"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-11-16</div><div class="title">mysql - 重点</div></div></a></div><div><a href="/2026/11/07/cmw6h2ogh00018iakc6ch0c05/" title="AI Coding 实践 - 以写一个论坛项目入手"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-11-07</div><div class="title">AI Coding 实践 - 以写一个论坛项目入手</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://katzenyasaxsblog.oss-cn-beijing.aliyuncs.com/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">KatzenyaSax</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" href="https://github.com/KatzenyaSax"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Hello</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E5%A4%A7%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E3%80%81%E4%B8%89%E7%A7%8D%E7%89%B9%E6%AE%8A%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">五大基本类型、三种特殊类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#String"><span class="toc-number">1.1.</span> <span class="toc-text">String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List"><span class="toc-number">1.2.</span> <span class="toc-text">List</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%EF%BC%9AquickList"><span class="toc-number">1.2.1.</span> <span class="toc-text">底层实现：quickList</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hash"><span class="toc-number">1.3.</span> <span class="toc-text">Hash</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%EF%BC%9AListPack-%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">底层实现：ListPack+链表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set"><span class="toc-number">1.4.</span> <span class="toc-text">Set</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%EF%BC%9AIntset-HashTable"><span class="toc-number">1.4.1.</span> <span class="toc-text">底层实现：Intset + HashTable</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ZSet"><span class="toc-number">1.5.</span> <span class="toc-text">ZSet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#todo%EF%BC%9A%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%EF%BC%9AZipList-SkipList"><span class="toc-number">1.5.1.</span> <span class="toc-text">todo：底层实现：ZipList + SkipList</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BitMap"><span class="toc-number">1.6.</span> <span class="toc-text">BitMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HyperLogLog"><span class="toc-number">1.7.</span> <span class="toc-text">HyperLogLog</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-%E6%80%A7%E8%83%BD"><span class="toc-number">2.</span> <span class="toc-text">Redis 性能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%AB%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">Redis 为什么快？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%95%E5%B1%82"><span class="toc-number">2.2.</span> <span class="toc-text">底层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SDS"><span class="toc-number">2.2.1.</span> <span class="toc-text">SDS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dict-Rehash"><span class="toc-number">2.2.2.</span> <span class="toc-text">Dict &amp; Rehash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TODO"><span class="toc-number">2.2.3.</span> <span class="toc-text">[TODO]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text">单线程模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-6-0-%E5%89%8D"><span class="toc-number">2.3.1.</span> <span class="toc-text">Redis 6.0 前</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/19/cmwq0f35t000073akhv2t69vc/" title="redis-重点">redis-重点</a><time datetime="2026-11-19T05:49:14.000Z" title="发表于 2026-11-19 13:49:14">2026-11-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/16/cmwj9g85m0000a3ak1jsichd4/" title="mysql - 重点">mysql - 重点</a><time datetime="2026-11-16T07:05:27.000Z" title="发表于 2026-11-16 15:05:27">2026-11-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/07/cmw6h2ogh00018iakc6ch0c05/" title="AI Coding 实践 - 以写一个论坛项目入手">AI Coding 实践 - 以写一个论坛项目入手</a><time datetime="2026-11-07T05:35:30.000Z" title="发表于 2026-11-07 13:35:30">2026-11-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/11/05/cmw7ridjs0000rlakdblzgcqm/" title="JavaGuide - Agent安全">JavaGuide - Agent安全</a><time datetime="2026-11-05T09:28:17.000Z" title="发表于 2026-11-05 17:28:17">2026-11-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/10/14/cmw6h2ogn00098iak6waadnrq/" title="ki - 核心设计">ki - 核心设计</a><time datetime="2026-10-14T07:40:40.000Z" title="发表于 2026-10-14 15:40:40">2026-10-14</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By KatzenyaSax</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
